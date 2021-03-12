@@ -3,22 +3,21 @@ import Swiper, {Navigation, Pagination, Autoplay} from 'swiper';
 import Readmore from "readmore-js";
 import GLightbox from 'glightbox';
 
-Swiper.use([Navigation, Pagination,Autoplay]);
+Swiper.use([Navigation, Pagination, Autoplay]);
 
 
-window.addEventListener('DOMContentLoaded', () =>{
+window.addEventListener('DOMContentLoaded', () => {
     /* HAMBURGER MENU IN HEADER*/
     let header = document.querySelector('.header'),
         hamburgerBtn = header.querySelector('.js-burger'),
         hamburgerMenu = header.querySelector('.hamburger-menu');
 
 
-
     header.addEventListener('click', (e) => {
-    if (e.target && e.target.classList.contains('js-burger')) {
-        hamburgerMenu.classList.toggle('active');
-        hamburgerBtn.classList.toggle('active');
-    }
+        if (e.target && e.target.classList.contains('js-burger')) {
+            hamburgerMenu.classList.toggle('active');
+            hamburgerBtn.classList.toggle('active');
+        }
     });
     /* ЗАГРУЗКА ДАННЫХ ИЗ LocalStorage */
     /* пример
@@ -29,31 +28,30 @@ window.addEventListener('DOMContentLoaded', () =>{
     }
     */
 
-   /* MODAL */
-   let modalBlock = document.querySelector('.js-sidebars'),
-   allModal = document.querySelectorAll('.js-sidebars > section');
+    /* MODAL */
+    let modalBlock = document.querySelector('.js-sidebars'),
+        allModal = document.querySelectorAll('.js-sidebars > section');
 
 
-   document.addEventListener('click', e =>{
-    let target = e.target;
-    /* ЗАКРЫТИЕ ПО КЛИКУ НА САЙДБАР */
+    document.addEventListener('click', e => {
+        let target = e.target;
+        /* ЗАКРЫТИЕ ПО КЛИКУ НА САЙДБАР */
         if (target && target.classList.contains('sidebar-bg')) {
             e.preventDefault();
             modalBlock.classList.toggle('sidebar-bg');
-            for(let i =0; i < allModal.length; i++){
+            for (let i = 0; i < allModal.length; i++) {
                 if (allModal[i].classList.toggle('active')) {
                     allModal[i].classList.remove('active');
                 }
             }
         }
-   });
-   
-   function toggleModal(e, modal) {
-    e.preventDefault();
-    modalBlock.classList.toggle('sidebar-bg');
-    modal.classList.toggle('active');
-    }
+    });
 
+    function toggleModal(e, modal) {
+        e.preventDefault();
+        modalBlock.classList.toggle('sidebar-bg');
+        modal.classList.toggle('active');
+    }
 
 
     /* TABS */
@@ -65,33 +63,37 @@ window.addEventListener('DOMContentLoaded', () =>{
         reviewsBlockTabs = document.querySelectorAll('.js-review-block-tab'),
         newsBlockParent = document.querySelector('.news-block'),
         newsBlockLink = document.querySelectorAll('.js-news-block-link'),
-        newsBlockTabs = document.querySelectorAll('.js-news-block-tab');
+        newsBlockTabs = document.querySelectorAll('.js-news-block-tab'),
+        regionParent = document.querySelector('.region'),
+        regionLink = document.querySelectorAll('.js-region-link'),
+        regionTabs = document.querySelectorAll('.js-region-tabs');
 
-        if(popularParent){
-            toggleTabs(popularLink, popularTabs, popularParent, 'js-popular-link');
-        };
-        if(reviewsBlockParent){
-            toggleTabs(reviewsBlockLink, reviewsBlockTabs, reviewsBlockParent, 'js-review-block-link');
-        }
-        if(newsBlockParent){
-            toggleTabs(newsBlockLink, newsBlockTabs, newsBlockParent, 'js-news-block-link');
-        }
+    if (popularParent) {
+        toggleTabs(popularLink, popularTabs, popularParent, 'js-popular-link');
+    }
+    if (reviewsBlockParent) {
+        toggleTabs(reviewsBlockLink, reviewsBlockTabs, reviewsBlockParent, 'js-review-block-link');
+    }
+    if (newsBlockParent) {
+        toggleTabs(newsBlockLink, newsBlockTabs, newsBlockParent, 'js-news-block-link');
+    }
+    if (regionParent) {
+        toggleTabs(regionLink, regionTabs, regionParent, 'js-region-link',  true );
+    }
 
-    function toggleTabs(link, tabs, parent, classContains, subTabs, subLink, subContent) {
+    function toggleTabs(link, tabs, parent, classContains, subRegion, subLink, subContent) {
         hideTabs(link, tabs);
         showTabs(0, link, tabs);
-        /*
-        let indexPrevTabs = 0,
-            TabsPrevHeight = tabs[indexPrevTabs].clientHeight;
-        console.log(tabs[0].clientHeight);
-        */
+
         let subIndex = 0;
 
-        if (subTabs) {
-            let subLinks = tabs[0].querySelectorAll(subLink),
-                subTabs = tabs[0].querySelectorAll(subContent);
+        if (subRegion) {
+            let subLinks = tabs[0].querySelectorAll('.subregion__link'),
+                subTabs = tabs[0].querySelectorAll('.subregion__content');
+
             hideTabs(subLinks, subTabs);
             showTabs(0, subLinks, subTabs);
+
         }
         parent.addEventListener('click', (e) => {
             if (e.target && e.target.classList.contains(classContains)) {
@@ -101,25 +103,20 @@ window.addEventListener('DOMContentLoaded', () =>{
                     if (link[i] === e.target) {
                         hideTabs(link, tabs);
                         showTabs(i, link, tabs);
-                        if (subTabs) {
-                            let subLinks = tabs[i].querySelectorAll(subLink),
-                                subTabs = tabs[i].querySelectorAll(subContent);
+                        if (subRegion) {
+                            let subLinks = tabs[i].querySelectorAll('.subregion__link'),
+                                subTabs = tabs[i].querySelectorAll('.subregion__content');
                             hideTabs(subLinks, subTabs);
                             showTabs(0, subLinks, subTabs);
                             subIndex = i;
                         }
-                        /*
-                        if(tabs[i].clientHeight > TabsPrevHeight){
-                            console.log(tabs[i].clientHeight);
-                            console.log(TabsPrevHeight);
-                        }
-                        */
+
                     }
                 }
             }
-            let subLinks = tabs[subIndex].querySelectorAll(subLink),
-                subTabs = tabs[subIndex].querySelectorAll(subContent);
-            if (e.target && e.target.classList.contains(subLink)) {
+            let subLinks = tabs[subIndex].querySelectorAll('.subregion__link'),
+                subTabs = tabs[subIndex].querySelectorAll('.subregion__content');
+            if (e.target && e.target.classList.contains('subregion__link')) {
                 e.preventDefault();
                 for (let i = 0; i < subLinks.length; i++) {
                     if (subLinks[i] === e.target) {
@@ -137,21 +134,21 @@ window.addEventListener('DOMContentLoaded', () =>{
     }
 
     function hideTabs(link, content) {
-        for(let i = 0; i < link.length; i++){
+        for (let i = 0; i < link.length; i++) {
             link[i].classList.remove('active');
         }
-        for(let i = 0; i < content.length; i++){
+        for (let i = 0; i < content.length; i++) {
             content[i].classList.remove('active');
         }
     }
 
     /* SHOW HIDE CONTENT */
-    
-    function toggleContent(link, content, linkClass){
+
+    function toggleContent(link, content, linkClass) {
         document.addEventListener('click', (e) => {
-            if(e.target && e.target.classList.contains(linkClass)){
+            if (e.target && e.target.classList.contains(linkClass)) {
                 e.preventDefault();
-                for(let i = 0; i < link.length; i++){
+                for (let i = 0; i < link.length; i++) {
                     if (e.target == link[i]) {
                         link[i].classList.toggle('active');
                         content[i].classList.toggle('active');
@@ -169,14 +166,14 @@ window.addEventListener('DOMContentLoaded', () =>{
         observer: true,
         allowSlidePrev: true,
         allowSlideNext: true,
-        autoplay:{
+        autoplay: {
             delay: 4000,
         },
         pagination: {
             el: '.swiper-pagination-banner',
             clickable: true,
 
-          },
+        },
 
     });
     let sliderNewsBlock1 = new Swiper('.swiper-news-block-1', {
@@ -190,7 +187,7 @@ window.addEventListener('DOMContentLoaded', () =>{
             el: '.swiper-pagination-news-block-1',
             clickable: true,
 
-          },
+        },
     });
     let sliderNewsBlock2 = new Swiper('.swiper-news-block-2', {
         slidesPerView: 1,
@@ -203,7 +200,7 @@ window.addEventListener('DOMContentLoaded', () =>{
             el: '.swiper-pagination-news-block-2',
             clickable: true,
 
-          },
+        },
     });
     let sliderNewsBlock3 = new Swiper('.swiper-news-block-3', {
         slidesPerView: 1,
@@ -216,7 +213,7 @@ window.addEventListener('DOMContentLoaded', () =>{
             el: '.swiper-pagination-news-block-3',
             clickable: true,
 
-          },
+        },
     });
     let sliderNewsBlock4 = new Swiper('.swiper-news-block-4', {
         slidesPerView: 1,
@@ -229,7 +226,7 @@ window.addEventListener('DOMContentLoaded', () =>{
             el: '.swiper-pagination-news-block-4',
             clickable: true,
 
-          },
+        },
     });
     let sliderTags = new Swiper('.swiper-tags', {
         slidesPerView: "auto",
@@ -244,37 +241,47 @@ window.addEventListener('DOMContentLoaded', () =>{
         },
 
     });
+    let sliderRegion = new Swiper('.swiper-region', {
+        slidesPerView: 2,
+        spaceBetween: 100,
+        observeParents: true,
+        observer: true,
+        allowSlidePrev: true,
+        allowSlideNext: true,
+        navigation: {
+            prevEl: '.region__prev',
+            nextEl: '.region__next',
+        },
+
+    });
 
 
     /* RATING */
     let ratingParent = document.querySelector('.js-rating'),
-    ratingInput = document.querySelector('#js-rating'),
-    ratingStar = document.querySelectorAll('.js-rating > li');
+        ratingInput = document.querySelector('#js-rating'),
+        ratingStar = document.querySelectorAll('.js-rating > li');
 
     if (ratingParent) {
-    ratingParent.addEventListener('click', (event) => {
-        event.preventDefault();
-        const target = event.target;
-        if (target && target.tagName == 'LI') {
-            for(let i = 0; i < ratingStar.length; i++){
-                ratingStar[i].classList.remove('active')
-            }
-            for (let i = 0; i => ratingStar.length; i++) {
-                if (ratingStar[i] == target) {
-                    ratingStar[i].classList.add('active');
-                    ratingInput.value = ++i;
-                    return
-                } else {
-                    ratingStar[i].classList.add('active');
+        ratingParent.addEventListener('click', (event) => {
+            event.preventDefault();
+            const target = event.target;
+            if (target && target.tagName == 'LI') {
+                for (let i = 0; i < ratingStar.length; i++) {
+                    ratingStar[i].classList.remove('active')
+                }
+                for (let i = 0; i => ratingStar.length; i++) {
+                    if (ratingStar[i] == target) {
+                        ratingStar[i].classList.add('active');
+                        ratingInput.value = ++i;
+                        return
+                    } else {
+                        ratingStar[i].classList.add('active');
+                    }
                 }
             }
-        }
 
-    });
+        });
     }
-
-
-
 
 
     /* VIDEO */
@@ -331,14 +338,6 @@ window.addEventListener('DOMContentLoaded', () =>{
 
     findVideos();
 });
-
-
-
-
-
-
-
-
 
 
 /* АДАПТИВНОЕ ПЕРЕМЕЩЕНИЕ БЛОКОВ */

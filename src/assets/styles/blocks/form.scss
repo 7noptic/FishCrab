@@ -1,0 +1,17 @@
+.form{
+  &__input{
+    text-align: center;
+    padding: 10px;
+    border: 1px solid #E6E6E6;
+    background: #fff;
+    border-radius: $radiusBtn;
+    &::placeholder{
+      text-align: center;
+      color: $brown;
+      opacity: .5;
+      font-size: 16px;
+      line-height: 24px;
+
+    }
+  }
+}

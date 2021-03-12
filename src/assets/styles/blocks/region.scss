@@ -1,0 +1,14 @@
+.region{
+  &__next,&__prev{
+    position: absolute;
+    top: calc(50% - 6px);
+    cursor: pointer;
+  }
+  &__next{
+    right: 0;
+  }
+  &__prev{
+    transform: rotate(180deg);
+    left: 0;
+  }
+}
