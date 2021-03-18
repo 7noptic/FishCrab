@@ -1,0 +1,21 @@
+.text-block {
+  padding: 60px 0;
+
+  &__title {
+    font-weight: 400;
+    font-size: 30px;
+    line-height: 42px;
+    text-transform: uppercase;
+    margin-bottom: 30px;
+  }
+
+  &__content {
+    font-weight: 300;
+    font-size: 14px;
+    line-height: 20px;
+
+    p {
+      margin-bottom: 20px;
+    }
+  }
+}
