@@ -19,3 +19,23 @@
     }
   }
 }
+@media screen and (max-width: 767px){
+  .text-block {
+    padding: 40px 0;
+  
+    &__title {
+      font-size: 24px;
+      line-height: 30px;
+      margin-bottom: 25px;
+    }
+  
+    &__content {
+      font-size: 14px;
+      line-height: 18px;
+  
+      p {
+        margin-bottom: 15px;
+      }
+    }
+  }
+}

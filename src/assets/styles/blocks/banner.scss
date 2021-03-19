@@ -1,4 +1,5 @@
 .banner{
+    position: relative;
     &-slide{
         height: 600px;
         background-repeat: no-repeat;
@@ -64,4 +65,42 @@
     }
     
     
+}
+@media screen and (max-width:1599px){
+    .banner{
+        &__title{
+            font-size: 58px;
+            line-height: 70px;
+        }
+    }
+}
+@media screen and (max-width:1199px){
+    .banner{
+        &__title{
+            font-size: 48px;
+        }
+    }
+}
+@media screen and (max-width:991px){
+    .banner{
+        &-slide{
+            height: 450px;
+        }
+        
+    }
+}
+@media screen and (max-width:575px){
+    .banner{
+       &__pagination{
+           display: none;
+       }
+       &__title{
+        font-size: 24px;
+        line-height: 28px;
+        display: flex;
+        justify-content: center;
+        text-align: center;
+        width: 100%;
+    }
+    }
 }

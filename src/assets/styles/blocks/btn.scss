@@ -16,7 +16,7 @@
 
     &-transparent{
         
-        &:hover,&.active{
+        &:hover,&:active,&:focus{
             box-shadow: 0px 0px 25px rgba(0, 0, 0, 0.45);
             background:$gray;
         }
@@ -25,10 +25,30 @@
         background: $gray;
         color: $brown;
         border:1px solid rgba(#000, .2);
-        &:hover,&.active{
+        &:hover,&:active,&:focus{
             background: $blue;
             color: #fff;
             border: 1px solid transparent;
         }
+    }
+    &-border-dashed{
+        border: 1px dashed #000;
+        background: transparent;
+        color: #000;
+        &:hover,&:active,&:focus{
+            background: $blue;
+            color: #fff;
+            border: 1px solid #000;
+        }
+    }
+}
+@media screen and (max-width:991px){
+    .btn{
+        font-size: 14px;
+    }
+}
+@media screen and (max-width:767px){
+    .btn{
+        font-size: 13px;
     }
 }

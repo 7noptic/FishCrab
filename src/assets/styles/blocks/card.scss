@@ -75,3 +75,13 @@
         width: 48%;
     }
 }
+@media screen and (max-width:1599px){
+    .card{
+        &__price{
+            font-size: 14px;
+            &-b{
+                font-size: 18px;
+            }
+        }
+    }
+}

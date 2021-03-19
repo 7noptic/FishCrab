@@ -13,3 +13,18 @@
     left: 0;
   }
 }
+@media screen and (max-width: 1199px){
+  .region{
+    padding: 50px 0;
+  }
+}
+@media screen and (max-width: 991px){
+  .region{
+    padding: 40px 0;
+  }
+}
+@media screen and (max-width: 767px){
+  .region{
+    padding: 40px 0;
+  }
+}

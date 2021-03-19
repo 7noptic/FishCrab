@@ -43,7 +43,11 @@ html, body {
     overflow: hidden;
   }
 }
-
+header,footer,main{
+  &.blur{
+    filter: blur(20px);
+  }
+}
 ul[class],
 ol[class] {
   list-style: none;

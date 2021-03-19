@@ -5,7 +5,7 @@
 @import "mixin";
 
 /* А */
-
+@import "blocks/adaptive-menu";
 /* В */
 @import "blocks/board-video";
 @import "blocks/btn";
@@ -21,6 +21,7 @@
 /* F */
 @import "blocks/form";
 @import "blocks/form-block";
+@import "blocks/footer";
 /* G */
 
 /* H */
@@ -35,6 +36,9 @@
 
 /* M */
 @import "blocks/modal";
+@import "blocks/modal-basket";
+@import "blocks/modal-region";
+@import "blocks/modal-one-click";
 /* N */
 @import "blocks/news";
 /* O */

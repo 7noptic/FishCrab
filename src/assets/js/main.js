@@ -9,6 +9,9 @@ Swiper.use([Navigation, Pagination, Autoplay]);
 window.addEventListener('DOMContentLoaded', () => {
     /* HAMBURGER MENU IN HEADER*/
     let header = document.querySelector('.header'),
+        main = document.querySelector('main'),
+        footer = document.querySelector('.footer'),
+        searchForm = header.querySelector('.form-wrapper-header'),
         hamburgerBtn = header.querySelector('.js-burger'),
         hamburgerMenu = header.querySelector('.hamburger-menu');
 
@@ -17,6 +20,9 @@ window.addEventListener('DOMContentLoaded', () => {
         if (e.target && e.target.classList.contains('js-burger')) {
             hamburgerMenu.classList.toggle('active');
             hamburgerBtn.classList.toggle('active');
+        }
+        if (e.target && e.target.classList.contains('js-search')) {
+            searchForm.classList.toggle('active');
         }
     });
     /* ЗАГРУЗКА ДАННЫХ ИЗ LocalStorage */
@@ -29,29 +35,119 @@ window.addEventListener('DOMContentLoaded', () => {
     */
 
     /* MODAL */
-    let modalBlock = document.querySelector('.js-sidebars'),
-        allModal = document.querySelectorAll('.js-sidebars > section');
+     let modalBlock = document.querySelector('.js-sidebars'),
+     allModal = document.querySelectorAll('.js-sidebars > section'),
+     modalCall = document.querySelector('.modal-call'),
+     modalRegion = document.querySelector('.modal-region'),
+     modalOneClick = document.querySelector('.modal-one-click'),
+     modalAssortment = document.querySelector('.modal-assortment'),
+     modalJob = document.querySelector('.modal-job'),
+     modalSubscribe = document.querySelector('.modal-subscribe'),
+     regionSelect = document.querySelectorAll('.modal-region__link'),
+     regionBtn = document.querySelector('.js-region-city'),
+     burgerMenu = document.querySelector('.adaptive-menu');
 
+ if (localStorage.getItem('city') != null) {
+     console.log(localStorage.getItem('city'));
+     console.log(typeof (localStorage.getItem('city')));
+     regionBtn.innerHTML = localStorage.getItem('city');
+ } else {
+     regionBtn.innerHTML = 'Москва';
+ }
+ document.addEventListener('click', e => {
 
-    document.addEventListener('click', e => {
-        let target = e.target;
-        /* ЗАКРЫТИЕ ПО КЛИКУ НА САЙДБАР */
-        if (target && target.classList.contains('sidebar-bg')) {
-            e.preventDefault();
-            modalBlock.classList.toggle('sidebar-bg');
-            for (let i = 0; i < allModal.length; i++) {
-                if (allModal[i].classList.toggle('active')) {
-                    allModal[i].classList.remove('active');
-                }
-            }
-        }
-    });
+     let target = e.target;
 
-    function toggleModal(e, modal) {
-        e.preventDefault();
-        modalBlock.classList.toggle('sidebar-bg');
-        modal.classList.toggle('active');
+     if (target && (target.classList.contains('js-call') || target.classList.contains('modal-call__exit'))) {
+         openCloseModal(e, modalCall);
+     }
+     if (target && (target.classList.contains('js-modal-header') || target.classList.contains('adaptive-menu__exit'))) {
+        openCloseModal(e, burgerMenu);
     }
+     if (target && (target.classList.contains('js-one-click') || target.classList.contains('modal-one-click__exit'))) {
+         openCloseModal(e, modalOneClick);
+     }
+     if (target && (target.classList.contains('js-job') || target.classList.contains('modal-job__exit'))) {
+         openCloseModal(e, modalJob);
+     }
+     if (target && (target.classList.contains('js-subscribe') || target.classList.contains('modal-subscribe__exit'))) {
+         openCloseModal(e, modalSubscribe);
+     }
+     if (target && (target.classList.contains('js-assortment') || target.classList.contains('modal-assortment__exit'))) {
+         openCloseModal(e, modalAssortment);
+     }
+     if (target && (target.classList.contains('js-region') || target.classList.contains('modal-region__exit'))) {
+         openCloseModal(e, modalRegion);
+     }
+     if (target.classList.contains('modal-region__link')) {
+         for (let i = 0; i < regionSelect.length; i++) {
+             if (regionSelect[i] == target) {
+                 let citiValue = regionSelect[i].innerHTML;
+                 localStorage.setItem('city', citiValue)
+                 let testValue = localStorage.getItem('city')
+                 if (testValue == 'undifiend') {
+                     regionBtn.innerHTML = 'Москва';
+                 } else {
+                     regionBtn.innerHTML = testValue.innerHTML;
+                     regionBtn.innerHTML = testValue;
+                 }
+
+             }
+         }
+         /*
+         regionSelect.forEach(item => {
+             if (item == target) {
+                 let citiValue = item.innerHTML;
+                 localStorage.setItem('city', citiValue)
+                 let testValue = localStorage.getItem('city')
+                 regionBtn.innerHTML = testValue.innerHTML;
+                 regionBtn.innerHTML = testValue;
+             }
+         });
+         */
+         openCloseModal(e, modalRegion);
+     } else if (target.classList.contains('js-region-close')) {
+         let city = document.querySelector('.js-select-city');
+         localStorage.setItem('city', city.innerHTML);
+         let testValue = localStorage.getItem('city');
+         regionBtn.innerHTML = testValue;
+         openCloseModal(e, modalRegion);
+     }
+
+
+     /* ЗАКРЫТИЕ ПО КЛИКУ НА САЙДБАР */
+     if (target && target.classList.contains('sidebar-bg')) {
+         e.preventDefault();
+         //html.classList.toggle('lock');
+         modalBlock.classList.toggle('sidebar-bg');
+         for (let i = 0; i < allModal.length; i++) {
+             if (allModal[i].classList.toggle('active')) {
+                 allModal[i].classList.remove('active');
+             }
+         }
+         header.classList.toggle('blur');
+        main.classList.toggle('blur');
+        footer.classList.toggle('blur');
+         /*
+         allModal.forEach(item => {
+             if (item.classList.toggle('active')) {
+                 item.classList.remove('active');
+             }
+         });*/
+     }
+
+ });
+
+ function openCloseModal(e, modal) {
+     e.preventDefault();
+     //html.classList.toggle('lock');
+     //body.classList.toggle('lock');
+     modalBlock.classList.toggle('sidebar-bg');
+     modal.classList.toggle('active');
+     header.classList.toggle('blur');
+     main.classList.toggle('blur');
+     footer.classList.toggle('blur');
+ }
 
 
     /* TABS */
@@ -143,7 +239,12 @@ window.addEventListener('DOMContentLoaded', () => {
     }
 
     /* SHOW HIDE CONTENT */
+    let footerLink = document.querySelectorAll('.footer__title'),
+        footerContent = document.querySelectorAll('.footer__nav');
 
+        if(footerLink.length > 0){
+            toggleContent(footerLink, footerContent, 'footer__title');
+        }
     function toggleContent(link, content, linkClass) {
         document.addEventListener('click', (e) => {
             if (e.target && e.target.classList.contains(linkClass)) {
@@ -242,7 +343,7 @@ window.addEventListener('DOMContentLoaded', () => {
 
     });
     let sliderRegion = new Swiper('.swiper-region', {
-        slidesPerView: 2,
+        slidesPerView: 1,
         spaceBetween: 100,
         observeParents: true,
         observer: true,
@@ -252,6 +353,20 @@ window.addEventListener('DOMContentLoaded', () => {
             prevEl: '.region__prev',
             nextEl: '.region__next',
         },
+        breakpoints:{
+            0:{
+                slidesPerView:1,
+                spaceBetween: 20,
+            },
+            767:{
+                spaceBetween: 50,
+                slidesPerView:2,
+            },
+            
+            1199:{
+                spaceBetween: 100,
+            },
+        }
 
     });
 
@@ -282,7 +397,27 @@ window.addEventListener('DOMContentLoaded', () => {
 
         });
     }
+/* card */
+    
+let cards = document.querySelectorAll('.banner__card'),
+oldPrice = document.querySelectorAll('.card__price'),
+newPrice = document.querySelectorAll('.card__price-b'),
+economy = document.querySelectorAll('.card__economy');
 
+if(cards){
+    for(let i = 0; i < cards.length;i++){
+        let oldP = +oldPrice[i].innerHTML.replace(/\D+/g, ''),
+            newP = +newPrice[i].innerHTML.replace(/\D+/g, ''),
+            resultNum = oldP - newP,
+            resultDec =   (oldP - newP) / (oldP / 100);
+        if(resultNum > 0){
+            economy[i].innerHTML = `${resultNum} ₽ ${resultDec.toFixed(1)} %`;
+        }
+        else{
+            economy[i].innerHTML = '-';
+        }
+    }
+}
 
     /* VIDEO */
     function findVideos() {
