@@ -192,7 +192,7 @@ window.addEventListener('DOMContentLoaded', () => {
         let subIndex = 0;
 
         if (subRegion) {
-            let subLinks = tabs[0].querySelectorAll('.subregion__link'),
+            let subLinks = tabs[0].querySelectorAll('.js-subregion-link'),
                 subTabs = tabs[0].querySelectorAll('.subregion__content');
 
             hideTabs(subLinks, subTabs);
@@ -208,7 +208,7 @@ window.addEventListener('DOMContentLoaded', () => {
                         hideTabs(link, tabs);
                         showTabs(i, link, tabs);
                         if (subRegion) {
-                            let subLinks = tabs[i].querySelectorAll('.subregion__link'),
+                            let subLinks = tabs[i].querySelectorAll('.js-subregion-link'),
                                 subTabs = tabs[i].querySelectorAll('.subregion__content');
                             hideTabs(subLinks, subTabs);
                             showTabs(0, subLinks, subTabs);
@@ -218,9 +218,9 @@ window.addEventListener('DOMContentLoaded', () => {
                     }
                 }
             }
-            let subLinks = tabs[subIndex].querySelectorAll('.subregion__link'),
+            let subLinks = tabs[subIndex].querySelectorAll('.js-subregion-link'),
                 subTabs = tabs[subIndex].querySelectorAll('.subregion__content');
-            if (e.target && e.target.classList.contains('subregion__link')) {
+            if (e.target && e.target.classList.contains('js-subregion-link')) {
                 e.preventDefault();
                 for (let i = 0; i < subLinks.length; i++) {
                     if (subLinks[i] === e.target) {

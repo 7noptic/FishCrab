@@ -7,7 +7,8 @@
   &__link{
     display: block;
     font-size: 16px;
-    line-height: 40px;
+    line-height: 22px;
+    padding: 10px 0;
     transition: $transition3;
     img {
       display: none;
@@ -36,7 +37,8 @@
     }
     &__link{
       font-size: 14px;
-      line-height: 40px;
+      line-height: 20px;
+      padding: 10px 0;
       margin-right: 15px;
       text-align: center;
       img {
@@ -66,7 +68,8 @@
     }
     &__link{
       font-size: 12px;
-      line-height: 30px;
+      line-height: 17px;
+      padding: 5px 0;
      
       
     }

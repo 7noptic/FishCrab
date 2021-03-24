@@ -204,6 +204,12 @@
         font-size: 18px;
         line-height: 22px;
       }
+      &__content{
+        p{
+          font-size: 13px;
+          line-height: 18px;
+        }
+      }
     }
   }
 }
@@ -264,6 +270,12 @@ line-height: 24px;
         padding-left: 30px;
         &::before{
           left: 0;
+        }
+      }
+      &__content{
+        p{
+          font-size: 12px;
+          line-height: 17px;
         }
       }
     }
