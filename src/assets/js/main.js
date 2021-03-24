@@ -1,9 +1,9 @@
 'use script';
-import Swiper, {Navigation, Pagination, Autoplay} from 'swiper';
+import Swiper, {Navigation, Pagination, Autoplay, Thumbs} from 'swiper';
 import Readmore from "readmore-js";
 import GLightbox from 'glightbox';
 
-Swiper.use([Navigation, Pagination, Autoplay]);
+Swiper.use([Navigation, Pagination, Autoplay, Thumbs]);
 
 
 window.addEventListener('DOMContentLoaded', () => {
@@ -38,11 +38,13 @@ window.addEventListener('DOMContentLoaded', () => {
      let modalBlock = document.querySelector('.js-sidebars'),
      allModal = document.querySelectorAll('.js-sidebars > section'),
      modalCall = document.querySelector('.modal-call'),
+     modalQuest = document.querySelector('.modal-quest'),
      modalRegion = document.querySelector('.modal-region'),
      modalOneClick = document.querySelector('.modal-one-click'),
      modalAssortment = document.querySelector('.modal-assortment'),
      modalJob = document.querySelector('.modal-job'),
      modalSubscribe = document.querySelector('.modal-subscribe'),
+     modalReviews = document.querySelector('.modal-reviews'),
      regionSelect = document.querySelectorAll('.modal-region__link'),
      regionBtn = document.querySelector('.js-region-city'),
      burgerMenu = document.querySelector('.adaptive-menu');
@@ -59,8 +61,11 @@ window.addEventListener('DOMContentLoaded', () => {
      let target = e.target;
 
      if (target && (target.classList.contains('js-call') || target.classList.contains('modal-call__exit'))) {
-         openCloseModal(e, modalCall);
-     }
+        openCloseModal(e, modalCall);
+    }
+    if (target && (target.classList.contains('js-reviews') || target.classList.contains('modal-reviews__exit'))) {
+        openCloseModal(e, modalReviews);
+    }
      if (target && (target.classList.contains('js-modal-header') || target.classList.contains('adaptive-menu__exit'))) {
         openCloseModal(e, burgerMenu);
     }
@@ -79,6 +84,9 @@ window.addEventListener('DOMContentLoaded', () => {
      if (target && (target.classList.contains('js-region') || target.classList.contains('modal-region__exit'))) {
          openCloseModal(e, modalRegion);
      }
+     if (target && (target.classList.contains('js-quest') || target.classList.contains('modal-quest__exit'))) {
+        openCloseModal(e, modalQuest);
+    }
      if (target.classList.contains('modal-region__link')) {
          for (let i = 0; i < regionSelect.length; i++) {
              if (regionSelect[i] == target) {
@@ -164,16 +172,16 @@ window.addEventListener('DOMContentLoaded', () => {
         regionLink = document.querySelectorAll('.js-region-link'),
         regionTabs = document.querySelectorAll('.js-region-tabs');
 
-    if (popularParent) {
+    if (popularParent && popularLink.length > 0) {
         toggleTabs(popularLink, popularTabs, popularParent, 'js-popular-link');
     }
-    if (reviewsBlockParent) {
+    if (reviewsBlockParent && reviewsBlockLink.length > 0) {
         toggleTabs(reviewsBlockLink, reviewsBlockTabs, reviewsBlockParent, 'js-review-block-link');
     }
-    if (newsBlockParent) {
+    if (newsBlockParent && newsBlockLink.length > 0) {
         toggleTabs(newsBlockLink, newsBlockTabs, newsBlockParent, 'js-news-block-link');
     }
-    if (regionParent) {
+    if (regionParent && regionLink.length > 0) {
         toggleTabs(regionLink, regionTabs, regionParent, 'js-region-link',  true );
     }
 
@@ -240,10 +248,30 @@ window.addEventListener('DOMContentLoaded', () => {
 
     /* SHOW HIDE CONTENT */
     let footerLink = document.querySelectorAll('.footer__title'),
-        footerContent = document.querySelectorAll('.footer__nav');
+        footerContent = document.querySelectorAll('.footer__nav'),
+        filterLink = document.querySelectorAll('.category-filter__header'),
+        filterContent = document.querySelectorAll('.category-filter__content'),
+        categoryBtn = document.querySelectorAll('.category-filter__btn'),
+        categoryContent = document.querySelectorAll('.category-filter__wrapper'),
+        jobLink = document.querySelectorAll('.job-item__header'),
+        jobContent = document.querySelectorAll('.job-item__content'),
+        faqLink = document.querySelectorAll('.faq-item__header'),
+        faqContent = document.querySelectorAll('.faq-item__content');
 
         if(footerLink.length > 0){
             toggleContent(footerLink, footerContent, 'footer__title');
+        }
+        if(filterLink.length > 0){
+            toggleContent(filterLink, filterContent, 'category-filter__header');
+        }
+        if(categoryBtn.length > 0){
+            toggleContent(categoryBtn, categoryContent, 'category-filter__btn');
+        }
+        if(jobLink.length > 0){
+            toggleContent(jobLink, jobContent, 'job-item__header');
+        }
+        if(faqLink.length > 0){
+            toggleContent(faqLink, faqContent, 'faq-item__header');
         }
     function toggleContent(link, content, linkClass) {
         document.addEventListener('click', (e) => {
@@ -254,6 +282,35 @@ window.addEventListener('DOMContentLoaded', () => {
                         link[i].classList.toggle('active');
                         content[i].classList.toggle('active');
                     }
+                }
+            }
+        });
+    }
+
+    /* MORE BTN */
+    let categoryLink = document.querySelector('.category-type__link'),
+        categoryItems = document.querySelectorAll('.category-type__item.hidden'),
+        trigger = true;
+
+        if (categoryItems.length > 0){
+            showMore(categoryItems, categoryLink, 'category-type__link');
+        }
+
+    function showMore (items, link, linkClass, text){
+        
+        document.addEventListener('click', (e) => {
+            if (e.target && e.target.classList.contains(linkClass)) {
+                e.preventDefault();
+                for (let i = 0; i < items.length; i++) {
+                        items[i].classList.toggle('active');
+                        items[i].classList.toggle('animation-r-to-l');
+                        if(trigger){
+                            link.querySelector('span').innerHTML = 'Скрыть';
+                            trigger = false;
+                        } else{
+                            link.querySelector('span').innerHTML = 'Ещё';
+                            trigger = true;
+                        }
                 }
             }
         });
@@ -365,11 +422,38 @@ window.addEventListener('DOMContentLoaded', () => {
             
             1199:{
                 spaceBetween: 100,
+                slidesPerView:2,
             },
         }
 
     });
-
+    let galleryThumbs = new Swiper('.gallery-thumbs', {
+        spaceBetween: 10,
+        autoplay:true,
+        slidesPerView: 4,
+        freeMode: true,
+        watchSlidesVisibility: true,
+        watchSlidesProgress: true,
+        breakpoints:{
+            0:{
+                slidesPerView: 2,
+            },
+            575:{
+                slidesPerView: 4,
+            }
+        }
+    });
+    let galleryTop = new Swiper('.gallery-top', {
+        spaceBetween: 0,
+        autoplay:true,
+        navigation: {
+            nextEl: '.product__next',
+            prevEl: '.product__prev',
+        },
+        thumbs: {
+            swiper: galleryThumbs
+        }
+    });
 
     /* RATING */
     let ratingParent = document.querySelector('.js-rating'),

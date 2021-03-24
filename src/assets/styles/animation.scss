@@ -46,14 +46,28 @@
   }
 }
 
-
+.animation-r-to-l{
+  animation-name: opacity;
+  animation-duration: .3s;
+}
 @keyframes r-to-l {
   0% {
     opacity: 0;
     transform: translateX(360px);
   }
   100% {
-    opacity: 4;
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes l-to-r {
+  0% {
+    opacity: 0;
+    transform: translateX(-360px);
+  }
+  100% {
+    opacity: 1;
     transform: translateX(0);
   }
 }
