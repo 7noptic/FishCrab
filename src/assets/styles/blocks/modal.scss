@@ -76,6 +76,17 @@ margin-bottom: 30px;
         width: 100%;
         margin-bottom: 30px;
         display: block;
+        label{
+          width: 100%;
+          display: flex;
+          justify-content: center;
+          text-align: center;
+          padding: 0 30px;
+          font-weight: 300;
+          font-size: 14px;
+          line-height: 20px;
+          margin-bottom: -15px;
+        }
         input{
           width: 100%;
         }
@@ -87,7 +98,7 @@ margin-bottom: 30px;
       justify-content: center;
       align-items: center;
       text-align: center;
-      padding: 19px;
+      padding: 12px;
     }
     &__agreement{
       max-width: 320px;

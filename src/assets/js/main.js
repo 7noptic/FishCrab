@@ -35,127 +35,135 @@ window.addEventListener('DOMContentLoaded', () => {
     */
 
     /* MODAL */
-     let modalBlock = document.querySelector('.js-sidebars'),
-     allModal = document.querySelectorAll('.js-sidebars > section'),
-     modalCall = document.querySelector('.modal-call'),
-     modalQuest = document.querySelector('.modal-quest'),
-     modalRegion = document.querySelector('.modal-region'),
-     modalOneClick = document.querySelector('.modal-one-click'),
-     modalAssortment = document.querySelector('.modal-assortment'),
-     modalJob = document.querySelector('.modal-job'),
-     modalSubscribe = document.querySelector('.modal-subscribe'),
-     modalReviews = document.querySelector('.modal-reviews'),
-     regionSelect = document.querySelectorAll('.modal-region__link'),
-     regionBtn = document.querySelector('.js-region-city'),
-     burgerMenu = document.querySelector('.adaptive-menu');
+    let modalBlock = document.querySelector('.js-sidebars'),
+        allModal = document.querySelectorAll('.js-sidebars > section'),
+        modalCall = document.querySelector('.modal-call'),
+        modalQuest = document.querySelector('.modal-quest'),
+        modalRegion = document.querySelector('.modal-region'),
+        modalOneClick = document.querySelector('.modal-one-click'),
+        modalAssortment = document.querySelector('.modal-assortment'),
+        modalJob = document.querySelector('.modal-job'),
+        modalPersonal = document.querySelector('.modal-personal'),
+        modalResetPass = document.querySelector('.modal-reset-pass'),
+        modalSubscribe = document.querySelector('.modal-subscribe'),
+        modalReviews = document.querySelector('.modal-reviews'),
+        regionSelect = document.querySelectorAll('.modal-region__link'),
+        regionBtn = document.querySelector('.js-region-city'),
+        burgerMenu = document.querySelector('.adaptive-menu');
 
- if (localStorage.getItem('city') != null) {
-     console.log(localStorage.getItem('city'));
-     console.log(typeof (localStorage.getItem('city')));
-     regionBtn.innerHTML = localStorage.getItem('city');
- } else {
-     regionBtn.innerHTML = 'Москва';
- }
- document.addEventListener('click', e => {
-
-     let target = e.target;
-
-     if (target && (target.classList.contains('js-call') || target.classList.contains('modal-call__exit'))) {
-        openCloseModal(e, modalCall);
+    if (localStorage.getItem('city') != null) {
+        console.log(localStorage.getItem('city'));
+        console.log(typeof (localStorage.getItem('city')));
+        regionBtn.innerHTML = localStorage.getItem('city');
+    } else {
+        regionBtn.innerHTML = 'Москва';
     }
-    if (target && (target.classList.contains('js-reviews') || target.classList.contains('modal-reviews__exit'))) {
-        openCloseModal(e, modalReviews);
-    }
-     if (target && (target.classList.contains('js-modal-header') || target.classList.contains('adaptive-menu__exit'))) {
-        openCloseModal(e, burgerMenu);
-    }
-     if (target && (target.classList.contains('js-one-click') || target.classList.contains('modal-one-click__exit'))) {
-         openCloseModal(e, modalOneClick);
-     }
-     if (target && (target.classList.contains('js-job') || target.classList.contains('modal-job__exit'))) {
-         openCloseModal(e, modalJob);
-     }
-     if (target && (target.classList.contains('js-subscribe') || target.classList.contains('modal-subscribe__exit'))) {
-         openCloseModal(e, modalSubscribe);
-     }
-     if (target && (target.classList.contains('js-assortment') || target.classList.contains('modal-assortment__exit'))) {
-         openCloseModal(e, modalAssortment);
-     }
-     if (target && (target.classList.contains('js-region') || target.classList.contains('modal-region__exit'))) {
-         openCloseModal(e, modalRegion);
-     }
-     if (target && (target.classList.contains('js-quest') || target.classList.contains('modal-quest__exit'))) {
-        openCloseModal(e, modalQuest);
-    }
-     if (target.classList.contains('modal-region__link')) {
-         for (let i = 0; i < regionSelect.length; i++) {
-             if (regionSelect[i] == target) {
-                 let citiValue = regionSelect[i].innerHTML;
-                 localStorage.setItem('city', citiValue)
-                 let testValue = localStorage.getItem('city')
-                 if (testValue == 'undifiend') {
-                     regionBtn.innerHTML = 'Москва';
-                 } else {
-                     regionBtn.innerHTML = testValue.innerHTML;
-                     regionBtn.innerHTML = testValue;
-                 }
+    document.addEventListener('click', e => {
 
-             }
-         }
-         /*
-         regionSelect.forEach(item => {
-             if (item == target) {
-                 let citiValue = item.innerHTML;
-                 localStorage.setItem('city', citiValue)
-                 let testValue = localStorage.getItem('city')
-                 regionBtn.innerHTML = testValue.innerHTML;
-                 regionBtn.innerHTML = testValue;
-             }
-         });
-         */
-         openCloseModal(e, modalRegion);
-     } else if (target.classList.contains('js-region-close')) {
-         let city = document.querySelector('.js-select-city');
-         localStorage.setItem('city', city.innerHTML);
-         let testValue = localStorage.getItem('city');
-         regionBtn.innerHTML = testValue;
-         openCloseModal(e, modalRegion);
-     }
+        let target = e.target;
+
+        if (target && (target.classList.contains('js-call') || target.classList.contains('modal-call__exit'))) {
+            openCloseModal(e, modalCall);
+        }
+        if (target && (target.classList.contains('js-reviews') || target.classList.contains('modal-reviews__exit'))) {
+            openCloseModal(e, modalReviews);
+        }
+        if (target && (target.classList.contains('js-modal-header') || target.classList.contains('adaptive-menu__exit'))) {
+            openCloseModal(e, burgerMenu);
+        }
+        if (target && (target.classList.contains('js-one-click') || target.classList.contains('modal-one-click__exit'))) {
+            openCloseModal(e, modalOneClick);
+        }
+        if (target && (target.classList.contains('js-job') || target.classList.contains('modal-job__exit'))) {
+            openCloseModal(e, modalJob);
+        }
+        if (target && (target.classList.contains('js-subscribe') || target.classList.contains('modal-subscribe__exit'))) {
+            openCloseModal(e, modalSubscribe);
+        }
+        if (target && (target.classList.contains('js-assortment') || target.classList.contains('modal-assortment__exit'))) {
+            openCloseModal(e, modalAssortment);
+        }
+        if (target && (target.classList.contains('js-region') || target.classList.contains('modal-region__exit'))) {
+            openCloseModal(e, modalRegion);
+        }
+        if (target && (target.classList.contains('js-quest') || target.classList.contains('modal-quest__exit'))) {
+            openCloseModal(e, modalQuest);
+        }
+        if (target && (target.classList.contains('js-personal-data') || target.classList.contains('modal-personal__exit'))) {
+            openCloseModal(e, modalPersonal);
+        }
+        if (target && (target.classList.contains('js-reset-pass') || target.classList.contains('modal-reset-pass__exit'))) {
+            openCloseModal(e, modalResetPass);
+        }
+        if (target.classList.contains('modal-region__link')) {
+            for (let i = 0; i < regionSelect.length; i++) {
+                if (regionSelect[i] == target) {
+                    let citiValue = regionSelect[i].innerHTML;
+                    localStorage.setItem('city', citiValue)
+                    let testValue = localStorage.getItem('city')
+                    if (testValue == 'undifiend') {
+                        regionBtn.innerHTML = 'Москва';
+                    } else {
+                        regionBtn.innerHTML = testValue.innerHTML;
+                        regionBtn.innerHTML = testValue;
+                    }
+
+                }
+            }
+            /*
+            regionSelect.forEach(item => {
+                if (item == target) {
+                    let citiValue = item.innerHTML;
+                    localStorage.setItem('city', citiValue)
+                    let testValue = localStorage.getItem('city')
+                    regionBtn.innerHTML = testValue.innerHTML;
+                    regionBtn.innerHTML = testValue;
+                }
+            });
+            */
+            openCloseModal(e, modalRegion);
+        } else if (target.classList.contains('js-region-close')) {
+            let city = document.querySelector('.js-select-city');
+            localStorage.setItem('city', city.innerHTML);
+            let testValue = localStorage.getItem('city');
+            regionBtn.innerHTML = testValue;
+            openCloseModal(e, modalRegion);
+        }
 
 
-     /* ЗАКРЫТИЕ ПО КЛИКУ НА САЙДБАР */
-     if (target && target.classList.contains('sidebar-bg')) {
-         e.preventDefault();
-         //html.classList.toggle('lock');
-         modalBlock.classList.toggle('sidebar-bg');
-         for (let i = 0; i < allModal.length; i++) {
-             if (allModal[i].classList.toggle('active')) {
-                 allModal[i].classList.remove('active');
-             }
-         }
-         header.classList.toggle('blur');
+        /* ЗАКРЫТИЕ ПО КЛИКУ НА САЙДБАР */
+        if (target && target.classList.contains('sidebar-bg')) {
+            e.preventDefault();
+            //html.classList.toggle('lock');
+            modalBlock.classList.toggle('sidebar-bg');
+            for (let i = 0; i < allModal.length; i++) {
+                if (allModal[i].classList.toggle('active')) {
+                    allModal[i].classList.remove('active');
+                }
+            }
+            header.classList.toggle('blur');
+            main.classList.toggle('blur');
+            footer.classList.toggle('blur');
+            /*
+            allModal.forEach(item => {
+                if (item.classList.toggle('active')) {
+                    item.classList.remove('active');
+                }
+            });*/
+        }
+
+    });
+
+    function openCloseModal(e, modal) {
+        e.preventDefault();
+        //html.classList.toggle('lock');
+        //body.classList.toggle('lock');
+        modalBlock.classList.toggle('sidebar-bg');
+        modal.classList.toggle('active');
+        header.classList.toggle('blur');
         main.classList.toggle('blur');
         footer.classList.toggle('blur');
-         /*
-         allModal.forEach(item => {
-             if (item.classList.toggle('active')) {
-                 item.classList.remove('active');
-             }
-         });*/
-     }
-
- });
-
- function openCloseModal(e, modal) {
-     e.preventDefault();
-     //html.classList.toggle('lock');
-     //body.classList.toggle('lock');
-     modalBlock.classList.toggle('sidebar-bg');
-     modal.classList.toggle('active');
-     header.classList.toggle('blur');
-     main.classList.toggle('blur');
-     footer.classList.toggle('blur');
- }
+    }
 
 
     /* TABS */
@@ -170,7 +178,10 @@ window.addEventListener('DOMContentLoaded', () => {
         newsBlockTabs = document.querySelectorAll('.js-news-block-tab'),
         regionParent = document.querySelector('.region'),
         regionLink = document.querySelectorAll('.js-region-link'),
-        regionTabs = document.querySelectorAll('.js-region-tabs');
+        regionTabs = document.querySelectorAll('.js-region-tabs'),
+        userParent = document.querySelector('.user'),
+        userLink = document.querySelectorAll('.js-user-link'),
+        userTabs = document.querySelectorAll('.js-user-content');
 
     if (popularParent && popularLink.length > 0) {
         toggleTabs(popularLink, popularTabs, popularParent, 'js-popular-link');
@@ -182,7 +193,10 @@ window.addEventListener('DOMContentLoaded', () => {
         toggleTabs(newsBlockLink, newsBlockTabs, newsBlockParent, 'js-news-block-link');
     }
     if (regionParent && regionLink.length > 0) {
-        toggleTabs(regionLink, regionTabs, regionParent, 'js-region-link',  true );
+        toggleTabs(regionLink, regionTabs, regionParent, 'js-region-link', true);
+    }
+    if (userParent && userLink.length > 0) {
+        toggleTabs(userLink, userTabs, userParent, 'js-user-link');
     }
 
     function toggleTabs(link, tabs, parent, classContains, subRegion, subLink, subContent) {
@@ -258,21 +272,22 @@ window.addEventListener('DOMContentLoaded', () => {
         faqLink = document.querySelectorAll('.faq-item__header'),
         faqContent = document.querySelectorAll('.faq-item__content');
 
-        if(footerLink.length > 0){
-            toggleContent(footerLink, footerContent, 'footer__title');
-        }
-        if(filterLink.length > 0){
-            toggleContent(filterLink, filterContent, 'category-filter__header');
-        }
-        if(categoryBtn.length > 0){
-            toggleContent(categoryBtn, categoryContent, 'category-filter__btn');
-        }
-        if(jobLink.length > 0){
-            toggleContent(jobLink, jobContent, 'job-item__header');
-        }
-        if(faqLink.length > 0){
-            toggleContent(faqLink, faqContent, 'faq-item__header');
-        }
+    if (footerLink.length > 0) {
+        toggleContent(footerLink, footerContent, 'footer__title');
+    }
+    if (filterLink.length > 0) {
+        toggleContent(filterLink, filterContent, 'category-filter__header');
+    }
+    if (categoryBtn.length > 0) {
+        toggleContent(categoryBtn, categoryContent, 'category-filter__btn');
+    }
+    if (jobLink.length > 0) {
+        toggleContent(jobLink, jobContent, 'job-item__header');
+    }
+    if (faqLink.length > 0) {
+        toggleContent(faqLink, faqContent, 'faq-item__header');
+    }
+
     function toggleContent(link, content, linkClass) {
         document.addEventListener('click', (e) => {
             if (e.target && e.target.classList.contains(linkClass)) {
@@ -292,25 +307,25 @@ window.addEventListener('DOMContentLoaded', () => {
         categoryItems = document.querySelectorAll('.category-type__item.hidden'),
         trigger = true;
 
-        if (categoryItems.length > 0){
-            showMore(categoryItems, categoryLink, 'category-type__link');
-        }
+    if (categoryItems.length > 0) {
+        showMore(categoryItems, categoryLink, 'category-type__link');
+    }
 
-    function showMore (items, link, linkClass, text){
-        
+    function showMore(items, link, linkClass, text) {
+
         document.addEventListener('click', (e) => {
             if (e.target && e.target.classList.contains(linkClass)) {
                 e.preventDefault();
                 for (let i = 0; i < items.length; i++) {
-                        items[i].classList.toggle('active');
-                        items[i].classList.toggle('animation-r-to-l');
-                        if(trigger){
-                            link.querySelector('span').innerHTML = 'Скрыть';
-                            trigger = false;
-                        } else{
-                            link.querySelector('span').innerHTML = 'Ещё';
-                            trigger = true;
-                        }
+                    items[i].classList.toggle('active');
+                    items[i].classList.toggle('animation-r-to-l');
+                    if (trigger) {
+                        link.querySelector('span').innerHTML = 'Скрыть';
+                        trigger = false;
+                    } else {
+                        link.querySelector('span').innerHTML = 'Ещё';
+                        trigger = true;
+                    }
                 }
             }
         });
@@ -410,42 +425,42 @@ window.addEventListener('DOMContentLoaded', () => {
             prevEl: '.region__prev',
             nextEl: '.region__next',
         },
-        breakpoints:{
-            0:{
-                slidesPerView:1,
+        breakpoints: {
+            0: {
+                slidesPerView: 1,
                 spaceBetween: 20,
             },
-            767:{
+            767: {
                 spaceBetween: 50,
-                slidesPerView:2,
+                slidesPerView: 2,
             },
-            
-            1199:{
+
+            1199: {
                 spaceBetween: 100,
-                slidesPerView:2,
+                slidesPerView: 2,
             },
         }
 
     });
     let galleryThumbs = new Swiper('.gallery-thumbs', {
         spaceBetween: 10,
-        autoplay:true,
+        autoplay: true,
         slidesPerView: 4,
         freeMode: true,
         watchSlidesVisibility: true,
         watchSlidesProgress: true,
-        breakpoints:{
-            0:{
+        breakpoints: {
+            0: {
                 slidesPerView: 2,
             },
-            575:{
+            575: {
                 slidesPerView: 4,
             }
         }
     });
     let galleryTop = new Swiper('.gallery-top', {
         spaceBetween: 0,
-        autoplay:true,
+        autoplay: true,
         navigation: {
             nextEl: '.product__next',
             prevEl: '.product__prev',
@@ -481,27 +496,26 @@ window.addEventListener('DOMContentLoaded', () => {
 
         });
     }
-/* card */
-    
-let cards = document.querySelectorAll('.banner__card'),
-oldPrice = document.querySelectorAll('.card__price'),
-newPrice = document.querySelectorAll('.card__price-b'),
-economy = document.querySelectorAll('.card__economy');
+    /* card */
 
-if(cards){
-    for(let i = 0; i < cards.length;i++){
-        let oldP = +oldPrice[i].innerHTML.replace(/\D+/g, ''),
-            newP = +newPrice[i].innerHTML.replace(/\D+/g, ''),
-            resultNum = oldP - newP,
-            resultDec =   (oldP - newP) / (oldP / 100);
-        if(resultNum > 0){
-            economy[i].innerHTML = `${resultNum} ₽ ${resultDec.toFixed(1)} %`;
-        }
-        else{
-            economy[i].innerHTML = '-';
+    let cards = document.querySelectorAll('.banner__card'),
+        oldPrice = document.querySelectorAll('.card__price'),
+        newPrice = document.querySelectorAll('.card__price-b'),
+        economy = document.querySelectorAll('.card__economy');
+
+    if (cards) {
+        for (let i = 0; i < cards.length; i++) {
+            let oldP = +oldPrice[i].innerHTML.replace(/\D+/g, ''),
+                newP = +newPrice[i].innerHTML.replace(/\D+/g, ''),
+                resultNum = oldP - newP,
+                resultDec = (oldP - newP) / (oldP / 100);
+            if (resultNum > 0) {
+                economy[i].innerHTML = `${resultNum} ₽ ${resultDec.toFixed(1)} %`;
+            } else {
+                economy[i].innerHTML = '-';
+            }
         }
     }
-}
 
     /* VIDEO */
     function findVideos() {

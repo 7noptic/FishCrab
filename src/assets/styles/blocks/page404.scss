@@ -1,0 +1,140 @@
+.page404 {
+  padding: 50px 0;
+
+  &__wrapper {
+    position: relative;
+    width: 400px;
+    height: 400px;
+    display: block;
+    margin: 0 auto;
+  }
+
+  &__img {
+    position: absolute;
+
+    &-1 {
+      top: 0;
+      left: 0;
+      animation: rotate360 20s infinite;
+    }
+
+    &-2 {
+      top: 37.5px;
+      left: 37.5px;
+      animation: rotate360 18s infinite;
+    }
+
+    &-3 {
+      top: 70px;
+      left: 70px;
+      animation: rotate360 16s infinite;
+    }
+
+    &-4 {
+      top: 100px;
+      left: 100px;
+      animation: rotate360 14s infinite;
+    }
+
+    &-5 {
+      top: 120px;
+      left: 120px;
+      animation: rotate360 12s infinite;
+    }
+
+    &-6 {
+      top: 138px;
+      left: 138px;
+      animation: rotate360 10s infinite;
+    }
+
+    &-7 {
+      top: 155px;
+      left: 155px;
+      animation: rotate360 8s infinite;
+    }
+  }
+
+  &__title {
+    position: absolute;
+    font-size: 65px;
+    line-height: 82px;
+
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    text-transform: uppercase;
+    top: 150px;
+    z-index: 10;
+    width: 400px;
+
+  }
+
+  &__subtitle {
+    position: absolute;
+    font-size: 18px;
+    line-height: 23px;
+
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    text-transform: uppercase;
+    top: 240px;
+    z-index: 10;
+    width: 400px;
+  }
+}
+
+@media screen and (max-width: 400px) {
+  .page404 {
+    &__row{
+      width: 400px !important;
+      margin-left: -5%;
+    }
+    &__title {
+      font-size: 40px;
+      top: 150px;
+      z-index: 10;
+      width: 320px;
+      margin-left: 10%;
+    }
+
+    &__subtitle {
+      position: absolute;
+      font-size: 14px;
+      line-height: 23px;
+
+      z-index: 10;
+      width: 320px;
+      margin-left: 10%;
+
+    }
+  }
+}
+@media screen and (max-width: 380px) {
+  .page404 {
+    &__row{
+      width: 400px !important;
+      margin-left: -10%;
+    }
+
+  }
+}
+@media screen and (max-width: 350px) {
+  .page404 {
+    &__row{
+      width: 400px !important;
+      margin-left: -15%;
+    }
+
+  }
+}
+@media screen and (max-width: 340px) {
+  .page404 {
+    &__row{
+      width: 400px !important;
+      margin-left: -20%;
+    }
+
+  }
+}
