@@ -1,6 +1,7 @@
-.sign{
+.sign {
   padding: 45px 0 70px;
-  &__title{
+
+  &__title {
     font-weight: bold;
     font-size: 16px;
     line-height: 24px;
@@ -8,28 +9,34 @@
     display: flex;
     text-align: center;
   }
-  &__wrapper{
+
+  &__wrapper {
     display: flex;
     flex-direction: column;
     align-items: center;
     max-width: 400px;
     margin: 0 auto;
   }
-  &__border{
+
+  &__border {
     border-right: 1px solid rgba(#000, .15);
   }
 }
-@media screen and (max-width: 767px){
-  .sign{
+
+@media screen and (max-width: 767px) {
+  .sign {
     padding: 30px 0;
-    &__title{
+
+    &__title {
       font-size: 14px;
       line-height: 20px;
     }
-    &__wrapper{
+
+    &__wrapper {
       margin-bottom: 30px;
     }
-    &__border{
+
+    &__border {
       border-right: none;
     }
   }

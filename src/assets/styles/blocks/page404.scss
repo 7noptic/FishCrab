@@ -87,10 +87,11 @@
 
 @media screen and (max-width: 400px) {
   .page404 {
-    &__row{
+    &__row {
       width: 400px !important;
       margin-left: -5%;
     }
+
     &__title {
       font-size: 40px;
       top: 150px;
@@ -111,27 +112,30 @@
     }
   }
 }
+
 @media screen and (max-width: 380px) {
   .page404 {
-    &__row{
+    &__row {
       width: 400px !important;
       margin-left: -10%;
     }
 
   }
 }
+
 @media screen and (max-width: 350px) {
   .page404 {
-    &__row{
+    &__row {
       width: 400px !important;
       margin-left: -15%;
     }
 
   }
 }
+
 @media screen and (max-width: 340px) {
   .page404 {
-    &__row{
+    &__row {
       width: 400px !important;
       margin-left: -20%;
     }

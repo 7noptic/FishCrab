@@ -45,6 +45,7 @@
 
   &-order {
     width: 100%;
+
     &__title {
       font-weight: normal;
       font-size: 20px;
@@ -93,15 +94,18 @@
     }
 
   }
-  &-programm{
+
+  &-programm {
     width: 100%;
     max-width: 600px;
-    &__title{
+
+    &__title {
       font-weight: normal;
       font-size: 20px;
       line-height: 20px;
       margin-bottom: 30px;
     }
+
     &__header {
       display: flex;
       border-bottom: 1px solid rgba(#000, .15);
@@ -121,14 +125,16 @@
       font-size: 14px;
       line-height: 20px;
     }
-    &__date,&__id,&__plus,&__minus,&__balance{
+
+    &__date, &__id, &__plus, &__minus, &__balance {
       width: 20%;
     }
   }
 }
-@media screen and (max-width: 1199px){
-  .user{
-    &-order{
+
+@media screen and (max-width: 1199px) {
+  .user {
+    &-order {
       &__header {
         font-size: 13px;
         line-height: 17px;
@@ -141,6 +147,7 @@
     }
   }
 }
+
 @media screen and (max-width: 767px) {
   .user {
     padding: 35px 0 50px;
@@ -156,10 +163,12 @@
         margin-right: 0;
       }
     }
-    &-programm{
-      &__title{
+
+    &-programm {
+      &__title {
         margin-bottom: 20px;
       }
+
       &__header {
         font-size: 12px;
         line-height: 17px;
@@ -189,14 +198,17 @@
         }
       }
     }
-    &-order{
-      &__header{
+
+    &-order {
+      &__header {
         display: none;
       }
-      &__item{
+
+      &__item {
         flex-wrap: wrap;
         font-size: 11px;
       }
+
       &__id {
         width: 25%;
         order: 1;
@@ -224,11 +236,13 @@
       }
 
     }
-    &-programm{
 
-      &__title{
+    &-programm {
+
+      &__title {
         margin-bottom: 20px;
       }
+
       &__header {
         font-size: 10px;
         line-height: 15px;

@@ -211,12 +211,14 @@
       &__agreement {
         font-size: 12px;
       }
-      &__title{
+
+      &__title {
         font-size: 27px;
         line-height: 36px;
         margin-bottom: 30px;
       }
-      &__wrapper{
+
+      &__wrapper {
         padding: 40px 0;
       }
     }
@@ -228,8 +230,9 @@
     &-block {
       padding: 40px 0;
     }
-    &-form{
-      form{
+
+    &-form {
+      form {
         display: flex;
         justify-content: center;
       }

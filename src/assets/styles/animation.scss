@@ -46,10 +46,11 @@
   }
 }
 
-.animation-r-to-l{
+.animation-r-to-l {
   animation-name: opacity;
   animation-duration: .3s;
 }
+
 @keyframes r-to-l {
   0% {
     opacity: 0;
@@ -80,11 +81,12 @@
     opacity: 1;
   }
 }
+
 @keyframes rotate360 {
-  0%{
+  0% {
     transform: rotate(0);
   }
-  100%{
+  100% {
     transform: rotate(360deg);
   }
 }

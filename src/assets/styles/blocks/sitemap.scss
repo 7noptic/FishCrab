@@ -1,10 +1,12 @@
-.sitemap{
+.sitemap {
   padding: 40px 0;
 }
-@media screen and (max-width: 991px){
-  .sitemap{
+
+@media screen and (max-width: 991px) {
+  .sitemap {
     padding: 30px 0;
-    &__nav{
+
+    &__nav {
       flex-direction: column;
     }
   }
