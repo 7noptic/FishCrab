@@ -183,19 +183,19 @@ window.addEventListener('DOMContentLoaded', () => {
         userLink = document.querySelectorAll('.js-user-link'),
         userTabs = document.querySelectorAll('.js-user-content');
 
-    if (popularParent && popularLink.length > 0) {
+    if (popularParent && popularLink.length > 0 && popularLink.length == popularTabs.length) {
         toggleTabs(popularLink, popularTabs, popularParent, 'js-popular-link');
     }
-    if (reviewsBlockParent && reviewsBlockLink.length > 0) {
+    if (reviewsBlockParent && reviewsBlockLink.length > 0 && reviewsBlockLink.length == reviewsBlockTabs.length) {
         toggleTabs(reviewsBlockLink, reviewsBlockTabs, reviewsBlockParent, 'js-review-block-link');
     }
-    if (newsBlockParent && newsBlockLink.length > 0) {
+    if (newsBlockParent && newsBlockLink.length > 0 && newsBlockLink.length == newsBlockTabs.length) {
         toggleTabs(newsBlockLink, newsBlockTabs, newsBlockParent, 'js-news-block-link');
     }
-    if (regionParent && regionLink.length > 0) {
+    if (regionParent && regionLink.length > 0 && regionLink.length == regionTabs.length) {
         toggleTabs(regionLink, regionTabs, regionParent, 'js-region-link', true);
     }
-    if (userParent && userLink.length > 0) {
+    if (userParent && userLink.length > 0 && userLink.length == userTabs.length) {
         toggleTabs(userLink, userTabs, userParent, 'js-user-link');
     }
 
@@ -209,8 +209,10 @@ window.addEventListener('DOMContentLoaded', () => {
             let subLinks = tabs[0].querySelectorAll('.js-subregion-link'),
                 subTabs = tabs[0].querySelectorAll('.subregion__content');
 
-            hideTabs(subLinks, subTabs);
-            showTabs(0, subLinks, subTabs);
+            if(subLinks.length > 0 && subLinks.length == subTabs.length){
+                hideTabs(subLinks, subTabs);
+                showTabs(0, subLinks, subTabs);
+            }
 
         }
         parent.addEventListener('click', (e) => {
@@ -224,9 +226,12 @@ window.addEventListener('DOMContentLoaded', () => {
                         if (subRegion) {
                             let subLinks = tabs[i].querySelectorAll('.js-subregion-link'),
                                 subTabs = tabs[i].querySelectorAll('.subregion__content');
-                            hideTabs(subLinks, subTabs);
-                            showTabs(0, subLinks, subTabs);
-                            subIndex = i;
+                            if(subLinks.length > 0 && subLinks.length == subTabs.length){
+                                hideTabs(subLinks, subTabs);
+                                showTabs(0, subLinks, subTabs);
+                                subIndex = i;
+                            }
+
                         }
 
                     }
@@ -345,7 +350,6 @@ window.addEventListener('DOMContentLoaded', () => {
         pagination: {
             el: '.swiper-pagination-banner',
             clickable: true,
-
         },
 
     });
