@@ -11,6 +11,8 @@ window.addEventListener('DOMContentLoaded', () => {
     let header = document.querySelector('.header'),
         main = document.querySelector('main'),
         footer = document.querySelector('.footer'),
+        html = document.querySelector('html'),
+        body = document.querySelector('body'),
         searchForm = header.querySelector('.form-wrapper-header'),
         hamburgerBtn = header.querySelector('.js-burger'),
         hamburgerMenu = header.querySelector('.hamburger-menu');
@@ -71,7 +73,7 @@ window.addEventListener('DOMContentLoaded', () => {
         if (target && (target.classList.contains('js-modal-header') || target.classList.contains('adaptive-menu__exit'))) {
             openCloseModal(e, burgerMenu);
         }
-        if (target && (target.classList.contains('js-one-click') || target.classList.contains('modal-one-click__exit'))) {
+        if (target && (target.classList.contains('js-one-click') || target.classList.contains('modal-one-click__exit') || target.classList.contains('js-product-one-click'))) {
             openCloseModal(e, modalOneClick);
         }
         if (target && (target.classList.contains('js-job') || target.classList.contains('modal-job__exit'))) {
@@ -141,6 +143,8 @@ window.addEventListener('DOMContentLoaded', () => {
                     allModal[i].classList.remove('active');
                 }
             }
+            html.classList.toggle('lock');
+        body.classList.toggle('lock');
             header.classList.toggle('blur');
             main.classList.toggle('blur');
             footer.classList.toggle('blur');
@@ -156,8 +160,8 @@ window.addEventListener('DOMContentLoaded', () => {
 
     function openCloseModal(e, modal) {
         e.preventDefault();
-        //html.classList.toggle('lock');
-        //body.classList.toggle('lock');
+        html.classList.toggle('lock');
+        body.classList.toggle('lock');
         modalBlock.classList.toggle('sidebar-bg');
         modal.classList.toggle('active');
         header.classList.toggle('blur');
@@ -520,7 +524,85 @@ window.addEventListener('DOMContentLoaded', () => {
             }
         }
     }
+        /* modal one click */
+        let card = document.querySelectorAll('.card'),
+        
 
+        modalOneClickImg = document.querySelector('.modal-one-click__img img'),
+        modalOneClickName = document.querySelector('.modal-one-click__name'),
+        modalOneClickPrice = document.querySelector('.js-modal-one-click-price'),
+        modalOneClickPriceOld = document.querySelector('.js-modal-one-click-price-old'),
+        modalOneClickBtn = document.querySelectorAll('.js-one-click'),
+
+        modalInputName = document.querySelector('#js-modal-one-click-name'),
+        modalInputPrice = document.querySelector('#js-modal-one-click-price'),
+        modalInputUrl = document.querySelector('#js-modal-one-click-url'),
+        oneCardParent = document.querySelector('.product'),
+        oneCardName = document.querySelector('.product__title'),
+        oneCardPrice = document.querySelector('.product-price__new'),
+        oneCardPriceOld = document.querySelector('.product-price__old'),
+        oneCardImg = document.querySelector('.product__img img');
+
+       
+
+        if(cards || oneCardParent){
+        getCardInfoToModalOneClick(cards);
+        }
+       
+        
+        function getCardInfoToModalOneClick(cards) {
+        for(let i=0; i < cards.length; i++) {
+            let cardPrice = cards[i].querySelector('.card__price-b'),
+                cardPriceOld = cards[i].querySelector('.card__price'),
+                cardName = cards[i].querySelector('.card__name'),
+                cardImg = cards[i].querySelector('.card__img img');
+
+
+
+                modalOneClickBtn[i].onclick = function(x) {
+                return function() {
+                    
+                        modalOneClickName.innerHTML = cardName.innerHTML;
+                        
+
+                        modalOneClickPrice.innerHTML = cardPrice.innerHTML;
+                        modalOneClickPriceOld.innerHTML = cardPriceOld.innerHTML;
+                        
+
+                        modalOneClickImg.src = cardImg.src;
+                        
+                        if(modalInputName){
+                            modalInputName.value = cardName.innerHTML
+                            modalInputPrice.value = cardPrice.innerHTML;
+                            modalInputUrl.value = cardName.href;
+                        }
+                }
+            }(i)
+        }
+        }
+        if(oneCardParent){
+            oneCardParent.addEventListener('click', (e)=>{
+                e.preventDefault();
+                if(e.target && e.target.classList.contains('js-product-one-click')){
+                modalOneClickName.innerHTML = oneCardName.innerHTML;
+                
+                modalOneClickPrice.innerHTML = oneCardPrice.innerHTML;
+
+                modalOneClickPrice.innerHTML = oneCardPrice.innerHTML;
+                    modalOneClickPriceOld.innerHTML = oneCardPriceOld.innerHTML;
+                
+        
+        
+                modalOneClickImg.src = oneCardImg.src;
+                
+                }
+                    if(modalInputName){
+                        modalInputName.value = oneCardName.innerHTML
+                        modalInputPrice.value = oneCardPrice.innerHTML;
+                        modalInputUrl.value =  window.location;
+                    }
+                });
+        }
     /* VIDEO */
     function findVideos() {
         let videos = document.querySelectorAll('.video');
