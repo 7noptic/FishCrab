@@ -3,41 +3,47 @@
   border-radius: 18px 18px 0 0;
   overflow: hidden;
   transition: $transition2;
-&__hidden{
-  transition: $transition2;
-  transform: translateY(-50px);
-  opacity: 0;
-  visibility: hidden;
-  display: none;
-  background:#F7F7F7;
-  padding: 0 20px 12px;
-  border-radius:0 0 18px 18px ;
-  overflow: hidden;
-}
-&__info{
-  padding: 12px 20px;
-}
-&:hover{
-  .card__hidden{
-    transform: scale(1);
-  opacity: 1;
-  display: block;
-  transform: translateY(0);
-  visibility: visible;
-    position: absolute;
-    z-index: 10;
-    left: 15px;
-    right: 15px;
-    box-shadow: 0px 25px 25px  rgba(0, 0, 0, 0.45);
+
+  &__hidden {
+    transition: $transition2;
+    transform: translateY(-50px);
+    opacity: 0;
+    visibility: hidden;
+    display: none;
+    background: #F7F7F7;
+    padding: 0 20px 12px;
+    border-radius: 0 0 18px 18px;
+    overflow: hidden;
   }
-  z-index: 11;
-box-shadow: 0px 0px 25px rgba(0, 0, 0, 0.45);
-}
-&.card-nohover{
-  &:hover{
-    box-shadow: none;
+
+  &__info {
+    padding: 12px 20px;
   }
-}
+
+  &:hover {
+    .card__hidden {
+      transform: scale(1);
+      opacity: 1;
+      display: block;
+      transform: translateY(0);
+      visibility: visible;
+      position: absolute;
+      z-index: 10;
+      left: 15px;
+      right: 15px;
+      box-shadow: 0px 20px 20px rgba(0, 0, 0, 0.45);
+    }
+
+    z-index: 11;
+    box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.45);
+  }
+
+  &.card-nohover {
+    &:hover {
+      box-shadow: none;
+    }
+  }
+
   &__img {
     border-top-left-radius: $radiusBtn;
     border-top-right-radius: $radiusBtn;
@@ -125,22 +131,52 @@ box-shadow: 0px 0px 25px rgba(0, 0, 0, 0.45);
 
 @media screen and (max-width: 1599px) {
   .card {
-    &__info{
+    &__info {
       padding: 10px;
     }
-    &__hidden{
+
+    &__hidden {
       padding: 0 10px 12px;
     }
-    &__btn{
+
+    &__btn {
       font-size: 12px;
       padding: 8px;
     }
-    &__price {
-      font-size: 13px;
+
+    &__text {
+      font-size: 11px;
+      margin-bottom: 3px;
 
       &-b {
-        font-size: 16px;
+        font-size: 14px;
+        margin-bottom: 3px;
       }
+    }
+
+    &__price {
+      font-size: 12px;
+      margin-bottom: 3px;
+
+      &-b {
+        font-size: 14px;
+        margin-bottom: 3px;
+      }
+    }
+  }
+}
+@media (max-width:575px) {
+  .card{
+    &__btns{
+      margin-top: 0;
+    }
+    &:hover {
+      .card__hidden {
+        box-shadow: 0px 5px 5px rgba(0, 0, 0, 0.45);
+      }
+
+      z-index: 11;
+      box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.45);
     }
   }
 }

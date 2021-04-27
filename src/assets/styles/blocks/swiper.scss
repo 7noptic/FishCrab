@@ -12,6 +12,29 @@
 
 .swiper-region {
   width: 90%;
+  .swiper-slide{
+    display: flex;
+    justify-content: center;
+    padding: 25px 25px 200px;
+    .card{
+      &:hover{
+        .card__hidden{
+          left: 25px;
+          right: 25px;
+        }
+      }
+    }
+  }
+}
+@media(max-width: 575px){
+  .swiper-region{
+    width: calc(100% + 60px);
+    margin-left: -30px;
+    margin-right: -30px;
+    .swiper-slide{
+      padding: 25px 25px 105px;
+    }
+  }
 }
 
 .gallery-top {
@@ -61,7 +84,7 @@
 }
 
 .swiper-tags {
-  padding: 25px 15px 40px;
+  padding: 25px 0 40px;
 
   &::after {
     content: "";

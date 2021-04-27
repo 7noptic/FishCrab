@@ -165,6 +165,17 @@
       <div class="container">
         <div class="row">
           <div class="col-12">
+            <div class="tags">
+              <div class="swiper-tags">
+                <div class="swiper-wrapper">
+                  <div class="swiper-slide swiper-slide__wauto"><a href="#" class="btn tags__link">О компании</a></div>
+                  <div class="swiper-slide swiper-slide__wauto"><a href="#" class="btn tags__link">О компании</a></div>
+                  <div class="swiper-slide swiper-slide__wauto"><a href="#" class="btn tags__link">Блок</a></div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-12">
             <nav class="subregion__nav sitemap__nav"><a href="sitemap.html" class="subregion__link active"><img src="img/arrright.svg" alt="">Карта сайта</a> <a href="404.html" class="subregion__link"><img src="img/arrright.svg" alt="">404</a> <a href="about.html" class="subregion__link"><img src="img/arrright.svg" alt="">О нас</a> <a href="article.html" class="subregion__link"><img src="img/arrright.svg" alt="">Статья</a> <a href="basket.html" class="subregion__link"><img src="img/arrright.svg" alt="">Корзина</a> <a href="cashback.html" class="subregion__link"><img src="img/arrright.svg" alt="">Кэшбэк</a> <a href="catalog.html" class="subregion__link"><img src="img/arrright.svg" alt="">Каталог</a> <a href="category.html" class="subregion__link"><img src="img/arrright.svg" alt="">Категории</a> <a href="contacts.html" class="subregion__link"><img src="img/arrright.svg" alt="">контакты</a> <a href="delivery.html" class="subregion__link"><img src="img/arrright.svg" alt="">Доставка</a> <a href="faq.html" class="subregion__link"><img src="img/arrright.svg" alt="">вопросы и ответы</a> <a href="job.html" class="subregion__link"><img src="img/arrright.svg" alt="">вакансии</a> <a href="news.html" class="subregion__link"><img src="img/arrright.svg" alt="">новости</a> <a href="product.html" class="subregion__link"><img src="img/arrright.svg" alt="">карточка товара</a> <a href="reviews.html" class="subregion__link"><img src="img/arrright.svg" alt="">Отзывы</a> <a href="search.html" class="subregion__link"><img src="img/arrright.svg" alt="">поиск</a> <a href="sign.html" class="subregion__link"><img src="img/arrright.svg" alt="">вход</a> <a href="index.html" class="subregion__link"><img src="img/arrright.svg" alt="">Главная</a> <a href="user.html" class="subregion__link"><img src="img/arrright.svg" alt="">Пользователь</a></nav>
           </div>
         </div>
@@ -337,8 +348,9 @@
         <h4 class="modal__subtitle">Заполните форму и мы Вам перезвоним</h4>
         <div class="modal-form">
           <form action="POST">
-            <div class="modal-form__wrapper"><span><input type="text" class="form-control form__input" placeholder="Имя"> </span><span><input type="tel" class="form-control form__input" placeholder="Телефон"> </span><span><button type="submit" class="btn modal-form__btn">заказать звонок</button></span></div>
-            <div class="modal-form__agreement">Я согласен условиями предоставления услуг и обработкой моих персональных данных при нажатии “Заказать звонок”</div>
+            <div class="modal-form__wrapper"><span><input type="text" class="form-control form__input" placeholder="Имя"> </span><span><input type="tel" class="form-control form__input" placeholder="Телефон"></span>
+              <div class="modal-form__agreement">Я согласен условиями предоставления услуг и обработкой моих персональных данных при нажатии “Заказать звонок”</div><span><button type="submit" class="btn modal-form__btn">заказать звонок</button></span>
+            </div>
           </form>
         </div><a href="#" class="modal__exit"><img src="img/mex.svg" alt="" class="modal-call__exit"></a>
       </div>
@@ -350,16 +362,16 @@
         <div class="modal-one-click__item">
           <div class="row">
             <div class="col-4">
-              <div class="modal-one-click__img"><img src="img/card2.jpg" alt=""></div>
+              <div class="modal-one-click__img"><img src="#" alt=""></div>
             </div>
-            <div class="col-8"><a href="#" class="modal-one-click__name">Семга свежемороженая Премиум чилийская</a>
+            <div class="col-8"><a href="#" class="modal-one-click__name"></a>
               <div class="row">
                 <div class="col-5">
                   <div class="card__text">Цена за 1 кг</div>
                 </div>
                 <div class="col-7">
-                  <p class="card__price-b">1230 ₽</p>
-                  <p class="card__price">1050 ₽</p>
+                  <p class="card__price-b js-modal-one-click-price"></p>
+                  <p class="card__price js-modal-one-click-price-old"></p>
                 </div>
               </div>
             </div>
@@ -367,8 +379,9 @@
         </div>
         <div class="modal-form">
           <form action="POST">
-            <div class="modal-form__wrapper"><span><input type="tel" class="form-control form__input" placeholder="Телефон"> </span><span><button type="submit" class="btn modal-form__btn">КУПИТЬ</button></span></div>
-            <div class="modal-form__agreement">Я согласен условиями предоставления услуг и обработкой моих персональных данных при нажатии “Заказать звонок”</div>
+            <div class="modal-form__wrapper"><span><input type="tel" class="form-control form__input" placeholder="Телефон"></span>
+              <div class="modal-form__agreement">Я согласен условиями предоставления услуг и обработкой моих персональных данных при нажатии “Заказать звонок”</div><span><button type="submit" class="btn modal-form__btn">КУПИТЬ</button></span>
+            </div><input type="hidden" id="js-modal-one-click-name" value=""> <input type="hidden" id="js-modal-one-click-price" value=""> <input type="hidden" id="js-modal-one-click-url" value="">
           </form>
         </div>
       </div>
@@ -378,15 +391,16 @@
         <h3 class="modal__title modal-subscribe__title">Подпишись на свежие<br>статьи и новости</h3>
         <div class="modal-form">
           <form action="POST">
-            <div class="modal-form__wrapper"><span><input type="text" class="form-control form__input" placeholder="Имя"> </span><span><input type="tel" class="form-control form__input" placeholder="Email"> </span><span><button type="submit" class="btn modal-form__btn">подписаться</button></span></div>
-            <div class="modal-form__agreement">Я согласен условиями предоставления услуг и обработкой моих персональных данных при нажатии “Подписаться”</div>
+            <div class="modal-form__wrapper"><span><input type="text" class="form-control form__input" placeholder="Имя"> </span><span><input type="tel" class="form-control form__input" placeholder="Email"></span>
+              <div class="modal-form__agreement">Я согласен условиями предоставления услуг и обработкой моих персональных данных при нажатии “Подписаться”</div><span><button type="submit" class="btn modal-form__btn">подписаться</button></span>
+            </div>
           </form>
         </div>
       </div>
     </section>
     <section class="modal modal-reviews">
       <div class="modal__wrapper modal-reviews__wrapper"><a href="#" class="modal__exit"><img src="img/mex.svg" alt="" class="modal-reviews__exit"></a>
-        <h3 class="modal__title">Заполните форму<br>и мы Вам перезвоним</h3>
+        <h3 class="modal__title">Оставить отзыв</h3>
         <div class="modal-form">
           <form action="POST">
             <div class="modal-form__wrapper"><span><input type="text" class="form-control form__input" placeholder="Имя"> </span><span><input type="tel" class="form-control form__input" placeholder="Телефон"> </span><span><textarea name="your-question" class="form-control form__textarea" id="your-question" cols="30" rows="10" placeholder="Ваш вопрос"></textarea> </span><span><label for="your-ava" class="btn btn-border-dashed modal-form__btn">Картинка</label> <input type="file" class="form-control d-none" id="your-ava"></span>
@@ -396,9 +410,9 @@
                   <li></li>
                   <li></li>
                   <li></li>
-                </ul><input type="hidden" class="form-control" value="0" name="rating" id="js-rating"></div><span><button type="submit" class="btn modal-form__btn">ОТПРАВИТЬ</button></span>
+                </ul><input type="hidden" class="form-control" value="0" name="rating" id="js-rating"></div>
+              <div class="modal-form__agreement">Я согласен условиями предоставления услуг и обработкой моих персональных данных при нажатии “Отправить”</div><span><button type="submit" class="btn modal-form__btn">ОТПРАВИТЬ</button></span>
             </div>
-            <div class="modal-form__agreement">Я согласен условиями предоставления услуг и обработкой моих персональных данных при нажатии “Отправить”</div>
           </form>
         </div>
       </div>
@@ -409,8 +423,9 @@
         <h4 class="modal__subtitle">Если у Вас еще остались вопросы, можете<br>задать их через форму обратной связи.<br>Мы ответим на указанный e-mail.</h4>
         <div class="modal-form">
           <form action="POST">
-            <div class="modal-form__wrapper"><span><input type="text" class="form-control form__input" placeholder="Имя"> </span><span><input type="tel" class="form-control form__input" placeholder="Телефон"> </span><span><input type="email" class="form-control form__input" placeholder="Email"> </span><span><textarea name="your-faq" class="form-control form__textarea" id="your-faq" cols="30" rows="10" placeholder="Ваш вопрос"></textarea> </span><span><button type="submit" class="btn modal-form__btn">ОТПРАВИТЬ ВОПРОС</button></span></div>
-            <div class="modal-form__agreement">Я согласен условиями предоставления услуг и обработкой моих персональных данных при нажатии “Отправить”</div>
+            <div class="modal-form__wrapper"><span><input type="text" class="form-control form__input" placeholder="Имя"> </span><span><input type="tel" class="form-control form__input" placeholder="Телефон"> </span><span><input type="email" class="form-control form__input" placeholder="Email"> </span><span><textarea name="your-faq" class="form-control form__textarea" id="your-faq" cols="30" rows="10" placeholder="Ваш вопрос"></textarea></span>
+              <div class="modal-form__agreement">Я согласен условиями предоставления услуг и обработкой моих персональных данных при нажатии “Отправить”</div><span><button type="submit" class="btn modal-form__btn">ОТПРАВИТЬ ВОПРОС</button></span>
+            </div>
           </form>
         </div>
       </div>
@@ -420,8 +435,9 @@
         <h3 class="modal__title">Откликнутся на вакансию</h3>
         <div class="modal-form">
           <form action="POST">
-            <div class="modal-form__wrapper"><span><input type="text" class="form-control form__input" placeholder="Имя"> </span><span><input type="tel" class="form-control form__input" placeholder="Телефон"> </span><span><textarea name="your-resume-2" class="form-control form__textarea" cols="30" rows="10" placeholder="Ваш вопрос"></textarea> </span><span><label for="your-resume" class="btn btn-border-dashed modal-form__btn">Загрузить резюме</label> <input type="file" class="form-control d-none" id="your-resume"> </span><span><button type="submit" class="btn modal-form__btn">ОТПРАВИТЬ РЕЗЮМЕ</button></span></div>
-            <div class="modal-form__agreement">Я согласен условиями предоставления услуг и обработкой моих персональных данных при нажатии “Отправить”</div>
+            <div class="modal-form__wrapper"><span><input type="text" class="form-control form__input" placeholder="Имя"> </span><span><input type="tel" class="form-control form__input" placeholder="Телефон"> </span><span><textarea name="your-resume-2" class="form-control form__textarea" cols="30" rows="10" placeholder="Ваш вопрос"></textarea> </span><span><label for="your-resume" class="btn btn-border-dashed modal-form__btn">Загрузить резюме</label> <input type="file" class="form-control d-none" id="your-resume"></span>
+              <div class="modal-form__agreement">Я согласен условиями предоставления услуг и обработкой моих персональных данных при нажатии “Отправить”</div><span><button type="submit" class="btn modal-form__btn">ОТПРАВИТЬ РЕЗЮМЕ</button></span>
+            </div>
           </form>
         </div>
       </div>

@@ -77,6 +77,7 @@ window.addEventListener('DOMContentLoaded', () => {
                 fragment.appendChild(document.getElementById('source'));
                 document.getElementById('destination').appendChild(fragment);
             }
+
             openCloseModal(e, burgerMenu);
         }
         if (target && (target.classList.contains('js-one-click') || target.classList.contains('modal-one-click__exit') || target.classList.contains('js-product-one-click'))) {
@@ -150,7 +151,7 @@ window.addEventListener('DOMContentLoaded', () => {
                 }
             }
             html.classList.toggle('lock');
-        body.classList.toggle('lock');
+            body.classList.toggle('lock');
             header.classList.toggle('blur');
             main.classList.toggle('blur');
             footer.classList.toggle('blur');
@@ -219,7 +220,7 @@ window.addEventListener('DOMContentLoaded', () => {
             let subLinks = tabs[0].querySelectorAll('.js-subregion-link'),
                 subTabs = tabs[0].querySelectorAll('.subregion__content');
 
-            if(subLinks.length > 0 && subLinks.length == subTabs.length){
+            if (subLinks.length > 0 && subLinks.length == subTabs.length) {
                 hideTabs(subLinks, subTabs);
                 showTabs(0, subLinks, subTabs);
             }
@@ -236,7 +237,7 @@ window.addEventListener('DOMContentLoaded', () => {
                         if (subRegion) {
                             let subLinks = tabs[i].querySelectorAll('.js-subregion-link'),
                                 subTabs = tabs[i].querySelectorAll('.subregion__content');
-                            if(subLinks.length > 0 && subLinks.length == subTabs.length){
+                            if (subLinks.length > 0 && subLinks.length == subTabs.length) {
                                 hideTabs(subLinks, subTabs);
                                 showTabs(0, subLinks, subTabs);
                                 subIndex = i;
@@ -430,7 +431,7 @@ window.addEventListener('DOMContentLoaded', () => {
     });
     let sliderRegion = new Swiper('.swiper-region', {
         slidesPerView: 1,
-        spaceBetween: 100,
+        spaceBetween: 0,
         observeParents: true,
         observer: true,
         allowSlidePrev: true,
@@ -442,15 +443,15 @@ window.addEventListener('DOMContentLoaded', () => {
         breakpoints: {
             0: {
                 slidesPerView: 1,
-                spaceBetween: 20,
+                spaceBetween: 0,
             },
-            767: {
-                spaceBetween: 50,
+           991: {
+                spaceBetween: 0,
                 slidesPerView: 2,
             },
 
             1199: {
-                spaceBetween: 100,
+                spaceBetween: 0,
                 slidesPerView: 2,
             },
         }
@@ -469,15 +470,15 @@ window.addEventListener('DOMContentLoaded', () => {
             },
             575: {
                 slidesPerView: 3,
-                
+
             },
             767: {
                 slidesPerView: 4,
-                
+
             },
             991: {
                 slidesPerView: 3,
-                
+
             },
             1599: {
                 slidesPerView: 4,
@@ -524,7 +525,7 @@ window.addEventListener('DOMContentLoaded', () => {
     }
     /* card */
 
-    let cards = document.querySelectorAll('.banner__card'),
+    let cards = document.querySelectorAll('.card'),
         oldPrice = document.querySelectorAll('.card__price'),
         newPrice = document.querySelectorAll('.card__price-b'),
         economy = document.querySelectorAll('.card__economy');
@@ -542,9 +543,9 @@ window.addEventListener('DOMContentLoaded', () => {
             }
         }
     }
-        /* modal one click */
-        let card = document.querySelectorAll('.card'),
-        
+    /* modal one click */
+    let card = document.querySelectorAll('.card'),
+
 
         modalOneClickImg = document.querySelector('.modal-one-click__img img'),
         modalOneClickName = document.querySelector('.modal-one-click__name'),
@@ -561,66 +562,73 @@ window.addEventListener('DOMContentLoaded', () => {
         oneCardPriceOld = document.querySelector('.product-price__old'),
         oneCardImg = document.querySelector('.product__img img');
 
-       
 
-        if(cards || oneCardParent){
+    if (cards || oneCardParent) {
         getCardInfoToModalOneClick(cards);
-        }
-       
-        
-        function getCardInfoToModalOneClick(cards) {
-        for(let i=0; i < cards.length; i++) {
+    }
+
+
+    function getCardInfoToModalOneClick(cards) {
+        for (let i = 0; i < cards.length; i++) {
             let cardPrice = cards[i].querySelector('.card__price-b'),
                 cardPriceOld = cards[i].querySelector('.card__price'),
                 cardName = cards[i].querySelector('.card__name'),
                 cardImg = cards[i].querySelector('.card__img img');
 
 
-
-                modalOneClickBtn[i].onclick = function(x) {
-                return function() {
-                    
+            modalOneClickBtn[i].onclick = function (x) {
+                return function () {
+                    if (cardName) {
                         modalOneClickName.innerHTML = cardName.innerHTML;
-                        
 
+                    }
+                    if (cardPrice) {
                         modalOneClickPrice.innerHTML = cardPrice.innerHTML;
-                        modalOneClickPriceOld.innerHTML = cardPriceOld.innerHTML;
-                        
 
+                    }
+                    if (cardPriceOld) {
+                        modalOneClickPriceOld.innerHTML = cardPriceOld.innerHTML;
+
+                    }
+                    if (cardImg) {
                         modalOneClickImg.src = cardImg.src;
-                        
-                        if(modalInputName){
-                            modalInputName.value = cardName.innerHTML
-                            modalInputPrice.value = cardPrice.innerHTML;
-                            modalInputUrl.value = cardName.href;
-                        }
+
+                    }
+
+
+                    if (modalInputName && modalInputPrice && modalInputUrl) {
+                        modalInputName.value = cardName.innerHTML
+                        modalInputPrice.value = cardPrice.innerHTML;
+                        modalInputUrl.value = cardName.href;
+                    }
                 }
             }(i)
         }
-        }
-        if(oneCardParent){
-            oneCardParent.addEventListener('click', (e)=>{
-                e.preventDefault();
-                if(e.target && e.target.classList.contains('js-product-one-click')){
+    }
+
+    if (oneCardParent) {
+        oneCardParent.addEventListener('click', (e) => {
+            e.preventDefault();
+            if (e.target && e.target.classList.contains('js-product-one-click')) {
                 modalOneClickName.innerHTML = oneCardName.innerHTML;
-                
+
                 modalOneClickPrice.innerHTML = oneCardPrice.innerHTML;
 
                 modalOneClickPrice.innerHTML = oneCardPrice.innerHTML;
-                    modalOneClickPriceOld.innerHTML = oneCardPriceOld.innerHTML;
-                
-        
-        
+                modalOneClickPriceOld.innerHTML = oneCardPriceOld.innerHTML;
+
+
                 modalOneClickImg.src = oneCardImg.src;
-                
-                }
-                    if(modalInputName){
-                        modalInputName.value = oneCardName.innerHTML
-                        modalInputPrice.value = oneCardPrice.innerHTML;
-                        modalInputUrl.value =  window.location;
-                    }
-                });
-        }
+
+            }
+            if (modalInputName) {
+                modalInputName.value = oneCardName.innerHTML
+                modalInputPrice.value = oneCardPrice.innerHTML;
+                modalInputUrl.value = window.location;
+            }
+        });
+    }
+
     /* VIDEO */
     function findVideos() {
         let videos = document.querySelectorAll('.video');

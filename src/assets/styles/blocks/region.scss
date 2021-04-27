@@ -1,5 +1,5 @@
 .region {
-  padding: 60px 0;
+  padding: 60px 0 0;
 
   &__next, &__prev {
     position: absolute;
@@ -19,18 +19,30 @@
 
 @media screen and (max-width: 1199px) {
   .region {
-    padding: 50px 0;
+    padding: 50px 0 0;
   }
 }
 
 @media screen and (max-width: 991px) {
   .region {
-    padding: 40px 0;
+    padding: 40px 0 0;
   }
 }
 
 @media screen and (max-width: 767px) {
   .region {
-    padding: 40px 0;
+    padding: 40px 0 0;
+  }
+}
+@media screen and (max-width: 575px) {
+  .region {
+    padding: 35px 0 0;
+    &__next {
+      right: -15px;
+    }
+
+    &__prev {
+      left: -15px;
+    }
   }
 }

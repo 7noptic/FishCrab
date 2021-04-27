@@ -1,5 +1,18 @@
 .category {
   padding: 50px 0;
+  &__list{
+    padding: 0 15px 20px!important;
+    display: flex;
+    margin-top: -20px!important;
+    li{
+      margin-right: 15px;
+      font-size: 14px;
+      font-weight: 500;
+      &:last-of-type{
+        margin-right: 0;
+      }
+    }
+  }
   &__subtitle{
     text-align: center;
     font-weight: bold;

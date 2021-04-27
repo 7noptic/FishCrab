@@ -1,5 +1,8 @@
 .popular {
   &-block {
+    padding: 45px 0;
+    position: relative;
+    z-index: 100;
     &__title {
       margin-bottom: 15px;
     }
