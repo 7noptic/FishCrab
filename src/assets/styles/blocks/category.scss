@@ -1,5 +1,12 @@
 .category {
-  padding: 70px 0;
+  padding: 50px 0;
+  &__subtitle{
+    text-align: center;
+    font-weight: bold;
+font-size: 14px;
+line-height: 18px;
+margin-bottom: 35px;
+  }
 
   &-type {
     display: flex;
@@ -290,7 +297,7 @@
 
 @media screen and (max-width: 1199px) {
   .category {
-    padding: 60px 0;
+    padding: 40px 0;
 
     &-type {
       flex-wrap: wrap;
@@ -339,7 +346,7 @@
 
 @media screen and (max-width: 991px) {
   .category {
-    padding: 50px 0;
+    padding: 35px 0;
 
     &-type {
 
@@ -383,7 +390,7 @@
 
 @media screen and (max-width: 767px) {
   .category {
-    padding: 40px 0;
+    padding: 30px 0;
 
     &-sort {
       flex-wrap: wrap;
@@ -401,7 +408,6 @@
 
 @media screen and (max-width: 575px) {
   .category {
-    padding: 30px 0;
 
     &-type {
       justify-content: center;

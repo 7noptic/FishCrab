@@ -18,20 +18,18 @@
   }
 
   &__next {
-    right: 0;
+    right: 15px;
   }
 
   &__prev {
     transform: rotate(180deg);
-    left: 0;
+    left: 15px;
   }
 
   &__title {
     font-weight: bold;
     font-size: 40px;
     line-height: 50px;
-    text-align: center;
-    text-transform: uppercase;
     margin-bottom: 25px;
   }
 

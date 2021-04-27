@@ -1,5 +1,5 @@
 .catalog {
-  margin: 50px 0 70px;
+  margin: 50px 0;
 
   &__items {
     display: flex;
@@ -12,7 +12,7 @@
   }
 
   &-block {
-    margin: 50px 0 70px;
+    margin: 50px 0;
 
     &__items {
       display: flex;
@@ -55,11 +55,11 @@
 
 @media screen and (max-width: 1199px) {
   .catalog {
-    margin: 40px 0 60px;
+    margin: 40px 0;
 
 
     &-block {
-      margin: 40px 0 60px;
+      margin: 40px 0;
 
       &__item {
         padding: 15px;
@@ -70,7 +70,7 @@
 
 @media screen and (max-width: 991px) {
   .catalog {
-    margin: 35px 0 50px;
+    margin: 35px 0;
 
     &__items {
 
@@ -80,7 +80,7 @@
     }
 
     &-block {
-      margin: 35px 0 50px;
+      margin: 35px 0;
 
       &__items {
         flex-wrap: wrap;
@@ -106,7 +106,7 @@
 
 @media screen and (max-width: 575px) {
   .catalog {
-    margin: 30px 0 40px;
+    margin: 30px 0;
 
     &__items {
       .catalog-block__item {
@@ -115,7 +115,7 @@
     }
 
     &-block {
-      margin: 30px 0 40px;
+      margin: 30px 0;
 
       &__items {
         flex-wrap: wrap;

@@ -68,9 +68,15 @@ window.addEventListener('DOMContentLoaded', () => {
             openCloseModal(e, modalCall);
         }
         if (target && (target.classList.contains('js-reviews') || target.classList.contains('modal-reviews__exit'))) {
+
             openCloseModal(e, modalReviews);
         }
         if (target && (target.classList.contains('js-modal-header') || target.classList.contains('adaptive-menu__exit'))) {
+            function MoveDiv() {
+                var fragment = document.createDocumentFragment();
+                fragment.appendChild(document.getElementById('source'));
+                document.getElementById('destination').appendChild(fragment);
+            }
             openCloseModal(e, burgerMenu);
         }
         if (target && (target.classList.contains('js-one-click') || target.classList.contains('modal-one-click__exit') || target.classList.contains('js-product-one-click'))) {
@@ -451,7 +457,7 @@ window.addEventListener('DOMContentLoaded', () => {
 
     });
     let galleryThumbs = new Swiper('.gallery-thumbs', {
-        spaceBetween: 10,
+        spaceBetween: 20,
         autoplay: true,
         slidesPerView: 4,
         freeMode: true,
@@ -462,8 +468,20 @@ window.addEventListener('DOMContentLoaded', () => {
                 slidesPerView: 2,
             },
             575: {
+                slidesPerView: 3,
+                
+            },
+            767: {
                 slidesPerView: 4,
-            }
+                
+            },
+            991: {
+                slidesPerView: 3,
+                
+            },
+            1599: {
+                slidesPerView: 4,
+            },
         }
     });
     let galleryTop = new Swiper('.gallery-top', {
