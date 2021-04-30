@@ -1,8 +1,8 @@
-.lwptoc {
+.lwptoc,.lwptoc-light {
   margin: 0 auto 40px !important;
   max-width: 450px !important;
 
-  &_item {
+  li.lwptoc_item {
     display: block !important;
     font-size: 16px !important;
     line-height: 24px !important;
@@ -13,4 +13,13 @@
       border-bottom: none !important;
     }
   }
+   .lwptoc_i A{
+    color: #321726!important;
+   }
+}
+.lwptoc-notInherit .lwptoc_i DIV A:hover{
+  border-bottom: none!important;
+}
+.lwptoc-light .lwptoc_i A:active, .lwptoc-light .lwptoc_i A:focus, .lwptoc-light .lwptoc_i A:hover{
+  color: $orange !important;
 }
