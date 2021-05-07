@@ -528,19 +528,53 @@ window.addEventListener('DOMContentLoaded', () => {
     let cards = document.querySelectorAll('.card'),
         oldPrice = document.querySelectorAll('.card__price'),
         newPrice = document.querySelectorAll('.card__price-b'),
-        economy = document.querySelectorAll('.card__economy');
-
+        economy = document.querySelectorAll('.card__economy'),
+        cardLike = document.querySelectorAll('.card__heart');
+    document.addEventListener('click', (e) => {
+        if (e.target && (e.target.classList.contains('card__heart') || e.target.classList.contains('js-card-heart'))) {
+            e.preventDefault();
+        }
+    })
+   
     if (cards) {
+        toggleCardLike(cardLike);
+
+        function toggleCardLike(like) {
+            for (let i = 0; i < like.length; i++) {
+                let trigger = false;
+                if (like[i]) {
+                    let heartColor = like[i].querySelector('.js-card-heart');
+                    like[i].onclick = function (x) {
+                        return function () {
+                            if (heartColor) {
+                                if (trigger) {
+                                    heartColor.style.fill = "#ffd803";
+                                    trigger = false;
+                                } else {
+                                    heartColor.style.fill = "#ff5307";
+                                    trigger = true;
+                                }
+                            }
+
+                        }
+                    }(i)
+                }
+            }
+        }
         for (let i = 0; i < cards.length; i++) {
-            let oldP = +oldPrice[i].innerHTML.replace(/\D+/g, ''),
+            if(oldPrice && newPrice){
+                let oldP = +oldPrice[i].innerHTML.replace(/\D+/g, ''),
                 newP = +newPrice[i].innerHTML.replace(/\D+/g, ''),
                 resultNum = oldP - newP,
                 resultDec = (oldP - newP) / (oldP / 100);
-            if (resultNum > 0) {
-                economy[i].innerHTML = `${resultNum} ₽ ${resultDec.toFixed(1)} %`;
-            } else {
-                economy[i].innerHTML = '-';
+                if (resultNum > 0) {
+                    economy[i].innerHTML = `${resultNum} ₽ ${resultDec.toFixed(1)} %`;
+                } else {
+                    economy[i].innerHTML = '-';
+                }
             }
+            
+           
         }
     }
     /* modal one click */

@@ -89,3 +89,9 @@ form{
   }
  
 }
+
+@media (max-width: 767px){
+  form input[type=radio]:checked+label:after{
+    top: 6px;
+  }
+}

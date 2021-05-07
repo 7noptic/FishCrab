@@ -4,3 +4,133 @@
 .wp-block-column p {
     padding-bottom: 10px;
 }
+.woocommerce-info{
+    text-align: center;
+}
+.woocommerce{
+    
+    input{
+        text-align: left;padding: 10px;
+        border: 1px solid #E6E6E6;
+        background: #fff;
+        border-radius: 10px;
+        transition: 0.3s all;
+    }
+    label{
+        font-size: 14px;
+        line-height: 24px;
+        cursor: pointer;
+      }
+      textarea{
+        width: 100%;
+        height: 140px;
+        padding: 10px;
+        border: 1px solid #E6E6E6;
+        background: #fff;
+        border-radius: 10px;
+        transition: 0.3s all;
+      }
+}
+@media (min-width:768px){
+    .col2-set .form-row-first, .col2-set .form-row-last{
+        width: 100%!important;
+            margin-right: 0!important;
+    }
+}
+.address-field{
+    width: 100%;
+}
+.woocommerce-additional-fields__field-wrapper{
+    p{
+        width: 100%;
+    }
+}
+.form-row .form-row-wide .validate-required{
+    width: 48%;
+}
+.place-order{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.woocommerce-billing-fields__field-wrapper{
+    .order-block{
+        .form-row{
+            &:nth-of-type(2){
+                width: 65%;
+                padding-right: 5%;
+            }
+
+            &:nth-of-type(3){
+                width: 35%;
+            }
+        }
+    }
+}
+.woocommerce-info, .woocommerce-noreviews, p.no-comments{
+    background-color: transparent!important;
+    margin-bottom: 20px;
+}
+@media (max-width:767px) {
+    .woocommerce-billing-fields__field-wrapper{
+        .order-block{
+            .form-row{
+                &:nth-of-type(1),&:nth-of-type(2),&:nth-of-type(3){
+                    width: 100%;
+                    padding-right: 0;
+                }
+            }
+        }
+    }
+    .woocommerce{
+        label{
+            font-size: 12px;
+            line-height: 20px;
+          }
+    }
+    
+  }
+@media (max-width:575px){
+    .woocommerce{
+        padding: 0 15px;
+    }
+}
+.payment_method_bacs{
+    position: relative;
+    padding-left: 55px;
+    &::before{
+        content: url('../img/card.svg');
+        position: absolute;
+        left: 0;
+        top: 0;
+        display: block;
+        max-width: 40px;
+    }
+}
+
+.payment_method_cod{
+    position: relative;
+    padding-left: 55px;
+    &::before{
+        content: url('../img/nal.svg');
+        position: absolute;
+        left: 0;
+        top: 0;
+        display: block;
+        max-width: 40px;
+    }
+}
+
+.payment_method_cheque{
+    position: relative;
+    padding-left: 55px;
+    &::before{
+        content: url('../img/bank.svg');
+        position: absolute;
+        left: 0;
+        top: 0;
+        display: block;
+        max-width: 40px;
+    }
+}
+.archive {display: block !important;}

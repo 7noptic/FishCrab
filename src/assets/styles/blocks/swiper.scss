@@ -162,3 +162,21 @@
   border-radius: 50%;
   opacity: 1;
 }
+.swiper-pagination-banner{
+  position: relative;
+  &::before{
+    content: url('../img/trap.svg');
+    position: absolute;
+    left: -38px;
+    top: 0;
+    display: block;
+  }
+  &::after{
+    content: url('../img/trap.svg');
+    position: absolute;
+    right: -38px;
+    top: 0;
+    display: block;
+    transform: scale(-1,1);
+  }
+}
