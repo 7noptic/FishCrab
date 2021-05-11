@@ -17,8 +17,12 @@
 
   &__profile {
     display: flex;
-    justify-content: space-around;
+    justify-content: flex-end;
     width: 100%;
+    a{
+      display: block;
+      margin-left: 20px;
+    }
   }
 
   &__menu {
@@ -129,9 +133,14 @@
     align-items: center;
     justify-content: center;
     width: 100%;
+    &-fix{
+      display: none!important;
+    }
 
-    span {
-      display: inline-block;
+    & > span {
+      display: inline-flex;
+      flex-direction: column;
+      align-items: center;
       font-size: 16px;
       line-height: 24px;
       margin-left: 10px;
@@ -267,6 +276,7 @@
     & > input {
       width: 100%;
       border-radius: $radiusBtn;
+      border: 1px solid #e6e6e6;
       background: #fff;
       padding: 6px;
 
@@ -466,13 +476,18 @@
       span {
         display: none;
       }
+      &-fix{
+        display: block!important;
+      }
 
       width: auto;
     }
 
     &__profile {
       align-items: center;
-
+  a{
+    margin-left: 0;
+  }
     }
   }
 }

@@ -464,6 +464,8 @@ window.addEventListener('DOMContentLoaded', () => {
         freeMode: true,
         watchSlidesVisibility: true,
         watchSlidesProgress: true,
+        slideToClickedSlide: true,
+        touchRatio: 0.2,
         breakpoints: {
             0: {
                 slidesPerView: 2,
@@ -562,7 +564,7 @@ window.addEventListener('DOMContentLoaded', () => {
             }
         }
         for (let i = 0; i < cards.length; i++) {
-            if(oldPrice && newPrice){
+            if(oldPrice && newPrice && economy[i]){
                 let oldP = +oldPrice[i].innerHTML.replace(/\D+/g, ''),
                 newP = +newPrice[i].innerHTML.replace(/\D+/g, ''),
                 resultNum = oldP - newP,
