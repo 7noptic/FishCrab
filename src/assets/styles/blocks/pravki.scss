@@ -276,3 +276,9 @@
 .woocommerce-widget-layered-nav-list__item.wc-layered-nav-term .count {
   display: none;
 }
+.toggleRevForm{
+  display: none;
+  &.active{
+    display: block;
+  }
+}

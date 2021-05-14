@@ -17,7 +17,17 @@ window.addEventListener('DOMContentLoaded', () => {
         hamburgerBtn = header.querySelector('.js-burger'),
         hamburgerMenu = header.querySelector('.hamburger-menu');
 
+/* product form */
+    let productForm = document.querySelector('.toggleRevForm'),
+        productBtn = document.querySelector('.toggleRevFormBtn');
 
+    if( productBtn && productForm){
+        productBtn.addEventListener('click', (e) =>{
+           e.preventDefault();
+           productForm.classList.add('active');
+           productBtn.style.display = 'none';
+        });
+    }
     header.addEventListener('click', (e) => {
         if (e.target && e.target.classList.contains('js-burger')) {
             hamburgerMenu.classList.toggle('active');
