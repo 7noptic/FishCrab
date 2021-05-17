@@ -1,12 +1,58 @@
 'use script';
 import Swiper, {Navigation, Pagination, Autoplay, Thumbs} from 'swiper';
-import Readmore from "readmore-js";
-import GLightbox from 'glightbox';
+
+
 
 Swiper.use([Navigation, Pagination, Autoplay, Thumbs]);
 
 
+
 window.addEventListener('DOMContentLoaded', () => {
+
+
+function getCookie(cname) {
+    var name = cname + "=";
+    var decodedCookie = decodeURIComponent(document.cookie);
+    var ca = decodedCookie.split(';');
+    for(var i = 0; i <ca.length; i++) {
+        var c = ca[i];
+        while (c.charAt(0) == ' ') {
+            c = c.substring(1);
+        }
+        if (c.indexOf(name) == 0) {
+            return c.substring(name.length, c.length);
+        }
+    }
+    return "";
+}
+    let sortBtn = document.querySelectorAll('.category-pagecount a'),
+        sortSelect = document.querySelector('.select.wppp-select');
+if(sortBtn && sortSelect){
+    if(getCookie('woocommerce_products_per_page') == ''){
+        fixSort(sortBtn[1], 48)
+    }else if(getCookie('woocommerce_products_per_page') == 24){
+        fixSort(sortBtn[0], 24)
+    }
+    else if(getCookie('woocommerce_products_per_page') == 48){
+        fixSort(sortBtn[1], 48)
+    }else{
+        fixSort(sortBtn[2], 96)
+    }
+
+    function fixSort (item , value){
+        for(let i = 0; i <= sortBtn.length; i++){
+            sortBtn[i].classList.remove('active');
+            if(i = sortBtn.length){
+                item.classList.add('active');
+                sortSelect.value = value;
+                break;
+            }
+        }
+    }
+}
+
+
+
     /* HAMBURGER MENU IN HEADER*/
     let header = document.querySelector('.header'),
         main = document.querySelector('main'),

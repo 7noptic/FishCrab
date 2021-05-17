@@ -15,6 +15,7 @@
     margin: 50px 0;
 
     &__items {
+      flex-wrap: wrap;
       display: flex;
       justify-content: space-between;
       width: 100%;
