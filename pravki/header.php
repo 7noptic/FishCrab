@@ -67,15 +67,14 @@
                              alt="Избранное"></a>
 
                     <?php
-                    if ( is_user_logged_in() ) { ?>
+                    if (is_user_logged_in()) { ?>
                         <a href="/my-account/">
-                        <img src="<?php echo esc_url(get_template_directory_uri()); ?>/assets/img/useractive.svg"
-                             alt="Аккаунт"></a> 
-                    <?php }
-                    else { ?>
-                    <a href="/my-account/">
-                        <img src="<?php echo esc_url(get_template_directory_uri()); ?>/assets/img/user.svg"
-                             alt="Аккаунт"></a> 
+                            <img src="<?php echo esc_url(get_template_directory_uri()); ?>/assets/img/useractive.svg"
+                                 alt="Аккаунт"></a>
+                    <?php } else { ?>
+                        <a href="/my-account/">
+                            <img src="<?php echo esc_url(get_template_directory_uri()); ?>/assets/img/user.svg"
+                                 alt="Аккаунт"></a>
                     <?php }
                     ?>
 
@@ -128,11 +127,52 @@
                 </div>
             </div>
 
-            <div class="col-2 d-flex align-items-center">
+            <div class="col-2 d-flex align-items-center header-basket-rel">
+
+
                 <a href="<?php echo esc_url(wc_get_cart_url()); ?>" class="header__basket header__main__basket">
                     <img src="<?php echo esc_url(get_template_directory_uri()); ?>/assets/img/b.svg" alt="">
                     <span><?php echo WC()->cart->get_cart_subtotal(); ?> (<?php echo WC()->cart->get_cart_contents_count(); ?>шт)</span>
+
                 </a>
+
+
+                <?php echo woocommerce_mini_cart(['list_class' => 'header-basket']); ?>
+
+
+<!--                <div class="header-basket">-->
+<!--                    <div class="header-basket__item">-->
+<!--                        <div class="header-basket__img">-->
+<!--                            <img src="#" alt="#">-->
+<!--                        </div>-->
+<!--                        <div class="header-basket__info">-->
+<!--                            <a href="#" class="header-basket__name">-->
+<!--                                Балык горбуши х/к (t°0 +2)-->
+<!--                            </a>-->
+<!--                            <div class="header-basket__price">-->
+<!--                                1050₽-->
+<!--                            </div>-->
+<!--                        </div>-->
+<!--                    </div>-->
+<!---->
+<!--                    <div class="header-basket__item">-->
+<!--                        <div class="header-basket__img">-->
+<!--                            <img src="#" alt="#">-->
+<!--                        </div>-->
+<!--                        <div class="header-basket__info">-->
+<!--                            <a href="#" class="header-basket__name">-->
+<!--                                Семга свежемороженая Премиум чилийская-->
+<!--                            </a>-->
+<!--                            <div class="header-basket__price">-->
+<!--                                1050₽-->
+<!--                            </div>-->
+<!---->
+<!--                        </div>-->
+<!---->
+<!--                    </div>-->
+<!---->
+<!--                    <a href="" class="btn header-basket__btn">ПЕРЕЙТИ В КОРЗИНУ</a>-->
+<!--                </div>-->
             </div>
         </div>
         <div class="row d-none d-lg-flex">

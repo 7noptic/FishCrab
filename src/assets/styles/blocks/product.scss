@@ -176,6 +176,10 @@
       display: flex;
       justify-content: center;
       align-items: center;
+      img{
+        object-fit: cover;
+        border-radius: 18px;
+      }
     }
 
     &__link {

@@ -40,6 +40,7 @@
   &__col {
     display: flex;
     align-items: center;
+
   }
 
   &__card {
@@ -47,10 +48,46 @@
     background-color: #F7F7F7;
     padding: 0 20px;
     height: 100%;
+    position: relative;
+    &-fix{
+      position: relative;
+      height: 100%;
+      &::before,&::after{
+        content: url("../img/round.png");
+        position: absolute;
+        left: 363px;
+
+      }
+      &::before{
+        top: -4px;
+        transform: scale(1.7) rotate(-90deg);
+
+      }
+      &::after{
+        bottom: -4px;
+        transform: scale(1.7) rotate(180deg);
+      }
+    }
+    &::before,&::after{
+      content: url("../img/round.png");
+      position: absolute;
+      left: -13px;
+
+    }
+    &::before{
+      top: -4px;
+      transform: scale(1.7);
+
+    }
+    &::after{
+      bottom: -4px;
+      transform: scale(1.7) rotate(90deg);
+    }
 
     .card {
       height: 100%;
       margin-bottom: 0;
+      position: relative;
 
       &__img {
         height: 290px;

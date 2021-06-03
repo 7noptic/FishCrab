@@ -8,9 +8,24 @@
     margin-bottom: 40px;
   }
 
+  img {
+    border-radius: 18px;
+  }
+
   &__img {
     border-radius: 18px;
     margin-bottom: 40px;
+  }
+
+  .wp-block-image.size-full {
+    position: relative;
+
+    &::before {
+      content: url("../img/lobog.svg");
+      position: absolute;
+      top: calc(50% - 70px);
+      left: 70px;
+    }
   }
 }
 
@@ -19,6 +34,15 @@
     padding: 35px 0 60px;
     font-size: 13px;
     line-height: 18px;
+
+    .wp-block-image.size-full {
+      position: relative;
+
+      &::before {
+        content: none;
+        display: none;
+      }
+    }
 
     &__text {
       margin-bottom: 30px;

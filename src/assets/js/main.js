@@ -1,56 +1,113 @@
 'use script';
 import Swiper, {Navigation, Pagination, Autoplay, Thumbs} from 'swiper';
-
-
+import GLightbox from 'glightbox';
 
 Swiper.use([Navigation, Pagination, Autoplay, Thumbs]);
 
 
-
 window.addEventListener('DOMContentLoaded', () => {
+    const lightbox = GLightbox({
+        touchNavigation: true,
+        loop: true,
+        autoplayVideos: true
+    });
 
 
-function getCookie(cname) {
-    var name = cname + "=";
-    var decodedCookie = decodeURIComponent(document.cookie);
-    var ca = decodedCookie.split(';');
-    for(var i = 0; i <ca.length; i++) {
-        var c = ca[i];
-        while (c.charAt(0) == ' ') {
-            c = c.substring(1);
-        }
-        if (c.indexOf(name) == 0) {
-            return c.substring(name.length, c.length);
-        }
+    function setCookie(cname, cvalue) {
+        let d = new Date();
+        d.setTime(d.getTime() + (24 * 60 * 60 * 1000));
+        let expires = "expires=" + d.toUTCString();
+        document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/";
     }
-    return "";
-}
+
+    function getCookie(cname) {
+        var name = cname + "=";
+        var decodedCookie = decodeURIComponent(document.cookie);
+        var ca = decodedCookie.split(';');
+        for (var i = 0; i < ca.length; i++) {
+            var c = ca[i];
+            while (c.charAt(0) == ' ') {
+                c = c.substring(1);
+            }
+            if (c.indexOf(name) == 0) {
+                return c.substring(name.length, c.length);
+            }
+        }
+        return "";
+    }
+
     let sortBtn = document.querySelectorAll('.category-pagecount a'),
-        sortSelect = document.querySelector('.select.wppp-select');
-if(sortBtn && sortSelect){
-    if(getCookie('woocommerce_products_per_page') == ''){
-        fixSort(sortBtn[1], 48)
-    }else if(getCookie('woocommerce_products_per_page') == 24){
-        fixSort(sortBtn[0], 24)
-    }
-    else if(getCookie('woocommerce_products_per_page') == 48){
-        fixSort(sortBtn[1], 48)
-    }else{
-        fixSort(sortBtn[2], 96)
+        sortSelect = document.querySelector('.select.wppp-select'),
+        categorySortLink = document.querySelectorAll('.category-sort__item');
+
+    if (categorySortLink) {
+        if (getCookie('woocommerce_products_sort') == 'СНАЧАЛА ДЕШЕВЫЕ') {
+            fixcategory(categorySortLink[0]);
+        } else if (getCookie('woocommerce_products_sort') == 'СНАЧАЛА ДОРОГИЕ') {
+            fixcategory(categorySortLink[1]);
+        } else if (getCookie('woocommerce_products_sort') == 'ПОПУЛЯРНОСТИ') {
+            fixcategory(categorySortLink[2]);
+        } else if (getCookie('woocommerce_products_sort') == 'НОВИНКИ') {
+            fixcategory(categorySortLink[3]);
+        }
+        if (categorySortLink[0]) {
+            categorySortLink[0].addEventListener('click', (e) => {
+                addCookiesSort('СНАЧАЛА ДЕШЕВЫЕ');
+            });
+        }
+        if (categorySortLink[1]) {
+            categorySortLink[1].addEventListener('click', (e) => {
+                addCookiesSort('СНАЧАЛА ДОРОГИЕ');
+            });
+        }
+        if (categorySortLink[2]) {
+            categorySortLink[2].addEventListener('click', (e) => {
+                addCookiesSort('ПОПУЛЯРНОСТИ');
+            });
+        }
+        if (categorySortLink[3]) {
+            categorySortLink[3].addEventListener('click', (e) => {
+                addCookiesSort('НОВИНКИ');
+            });
+        }
+
+        function addCookiesSort(value) {
+            setCookie('woocommerce_products_sort', value)
+        }
     }
 
-    function fixSort (item , value){
-        for(let i = 0; i <= sortBtn.length; i++){
-            sortBtn[i].classList.remove('active');
-            if(i = sortBtn.length){
+    function fixcategory(item) {
+        for (let i = 0; i < categorySortLink.length; i++) {
+            categorySortLink[i].classList.remove('active');
+            if (categorySortLink[i] == item) {
                 item.classList.add('active');
-                sortSelect.value = value;
-                break;
             }
         }
     }
-}
 
+    if (sortBtn && sortSelect) {
+        if (getCookie('woocommerce_products_per_page') == '') {
+            setCookie('woocommerce_products_per_page', 48);
+            fixSort(sortBtn[1], 48)
+        } else if (getCookie('woocommerce_products_per_page') == 24) {
+            fixSort(sortBtn[0], 24)
+        } else if (getCookie('woocommerce_products_per_page') == 48) {
+            fixSort(sortBtn[1], 48)
+        } else {
+            fixSort(sortBtn[2], 96)
+        }
+
+        function fixSort(item, value) {
+            for (let i = 0; i <= sortBtn.length; i++) {
+                sortBtn[i].classList.remove('active');
+                if (i = sortBtn.length) {
+                    item.classList.add('active');
+                    sortSelect.value = value;
+                    break;
+                }
+            }
+        }
+    }
 
 
     /* HAMBURGER MENU IN HEADER*/
@@ -63,15 +120,15 @@ if(sortBtn && sortSelect){
         hamburgerBtn = header.querySelector('.js-burger'),
         hamburgerMenu = header.querySelector('.hamburger-menu');
 
-/* product form */
+    /* product form */
     let productForm = document.querySelector('.toggleRevForm'),
         productBtn = document.querySelector('.toggleRevFormBtn');
 
-    if( productBtn && productForm){
-        productBtn.addEventListener('click', (e) =>{
-           e.preventDefault();
-           productForm.classList.add('active');
-           productBtn.style.display = 'none';
+    if (productBtn && productForm) {
+        productBtn.addEventListener('click', (e) => {
+            e.preventDefault();
+            productForm.classList.add('active');
+            productBtn.style.display = 'none';
         });
     }
     header.addEventListener('click', (e) => {
@@ -136,7 +193,7 @@ if(sortBtn && sortSelect){
 
             openCloseModal(e, burgerMenu);
         }
-        if (target && (target.classList.contains('js-one-click') || target.classList.contains('modal-one-click__exit') || target.classList.contains('js-product-one-click'))) {
+        if (target && (target.classList.contains('js-one-click') || target.classList.contains('modal-one-click__exit') || target.classList.contains('js-product-one-click') || target.classList.contains('swal2-confirm') || target.classList.contains('swal2-confirm span'))) {
             openCloseModal(e, modalOneClick);
         }
         if (target && (target.classList.contains('js-job') || target.classList.contains('modal-job__exit'))) {
@@ -246,10 +303,15 @@ if(sortBtn && sortSelect){
         regionParent = document.querySelector('.region'),
         regionLink = document.querySelectorAll('.js-region-link'),
         regionTabs = document.querySelectorAll('.js-region-tabs'),
-        userParent = document.querySelector('.user'),
+        userParent = document.querySelector('.sign'),
         userLink = document.querySelectorAll('.js-user-link'),
-        userTabs = document.querySelectorAll('.js-user-content');
-
+        userTabs = document.querySelectorAll('.js-user-content'),
+        recipeParent = document.querySelector('.popular-block'),
+        recipeLink = document.querySelectorAll('.js-recipe-link'),
+        recipeTabs = document.querySelectorAll('.js-recipe-content');
+    if (recipeParent && recipeLink.length > 0 && recipeLink.length == recipeTabs.length) {
+        toggleTabs(recipeLink, recipeTabs, recipeParent, 'js-recipe-link');
+    }
     if (popularParent && popularLink.length > 0 && popularLink.length == popularTabs.length) {
         toggleTabs(popularLink, popularTabs, popularParent, 'js-popular-link');
     }
@@ -263,6 +325,8 @@ if(sortBtn && sortSelect){
         toggleTabs(regionLink, regionTabs, regionParent, 'js-region-link', true);
     }
     if (userParent && userLink.length > 0 && userLink.length == userTabs.length) {
+        console.log(userLink.length);
+        console.log(userTabs.length);
         toggleTabs(userLink, userTabs, userParent, 'js-user-link');
     }
 
@@ -283,6 +347,7 @@ if(sortBtn && sortSelect){
 
         }
         parent.addEventListener('click', (e) => {
+            console.log(e.target);
             if (e.target && e.target.classList.contains(classContains)) {
                 e.preventDefault();
 
@@ -339,16 +404,24 @@ if(sortBtn && sortSelect){
         filterContent = document.querySelectorAll('.category-filter__content'),
         categoryBtn = document.querySelectorAll('.category-filter__btn'),
         categoryContent = document.querySelectorAll('.category-filter__wrapper'),
+        filter2Link = document.querySelectorAll('.widget.woocommerce.widget_layered_nav.woocommerce-widget-layered-nav .widget-title'),
+        filter2Content = document.querySelectorAll('ul.woocommerce-widget-layered-nav-list'),
         jobLink = document.querySelectorAll('.job-item__header'),
         jobContent = document.querySelectorAll('.job-item__content'),
         faqLink = document.querySelectorAll('.faq-item__header'),
         faqContent = document.querySelectorAll('.faq-item__content');
 
+
     if (footerLink.length > 0) {
         toggleContent(footerLink, footerContent, 'footer__title');
     }
     if (filterLink.length > 0) {
+
         toggleContent(filterLink, filterContent, 'category-filter__header');
+    }
+    if (filter2Link.length > 0) {
+
+        toggleContent(filter2Link, filter2Content, 'widget-title');
     }
     if (categoryBtn.length > 0) {
         toggleContent(categoryBtn, categoryContent, 'category-filter__btn');
@@ -501,7 +574,7 @@ if(sortBtn && sortSelect){
                 slidesPerView: 1,
                 spaceBetween: 0,
             },
-           991: {
+            991: {
                 spaceBetween: 0,
                 slidesPerView: 2,
             },
@@ -513,7 +586,7 @@ if(sortBtn && sortSelect){
         }
 
     });
-    let galleryThumbs = new Swiper('.gallery-thumbs', {
+    let galleryThumbsFixedBlyat = new Swiper('.gallery-thumbs', {
         spaceBetween: 20,
         autoplay: true,
         slidesPerView: 4,
@@ -543,7 +616,7 @@ if(sortBtn && sortSelect){
             },
         }
     });
-    let galleryTop = new Swiper('.gallery-top', {
+    let galleryTopFixedBlyat = new Swiper('.gallery-top', {
         spaceBetween: 0,
         autoplay: true,
         navigation: {
@@ -551,10 +624,44 @@ if(sortBtn && sortSelect){
             prevEl: '.product__prev',
         },
         thumbs: {
-            swiper: galleryThumbs
+            swiper: galleryThumbsFixedBlyat
         }
     });
+    /* push */
+    let pushAdd = document.querySelector('.js-push-add-basket'),
+        pushNoBasket = document.querySelector('.js-push-add-favorites'),
+        wooError = document.querySelector('.woocommerce-error'),
+        wooPush = document.querySelector('.woocommerce-message');
+    if (wooPush) {
+        wooPush.innerHTML = 'Успешно!';
+        wooPush.classList.add('active');
+        setTimeout(showPush, 5000, wooPush);
 
+        function showPush(item) {
+            item.classList.remove('active');
+        }
+    }
+
+    document.addEventListener('click', (e) => {
+
+        if (e.target && e.target.classList.contains('add_to_cart_button')) {
+            e.preventDefault();
+
+            function showPush(item) {
+                item.classList.remove('active');
+            }
+
+            if (wooError) {
+                pushNoBasket.classList.add('active');
+                setTimeout(showPush, 5000, pushNoBasket);
+            } else {
+                pushAdd.classList.add('active');
+
+                setTimeout(showPush, 5000, pushAdd);
+            }
+
+        }
+    });
     /* RATING */
     let ratingParent = document.querySelector('.js-rating'),
         ratingInput = document.querySelector('#js-rating'),
@@ -593,7 +700,7 @@ if(sortBtn && sortSelect){
             e.preventDefault();
         }
     })
-   
+
     if (cards) {
         toggleCardLike(cardLike);
 
@@ -601,10 +708,21 @@ if(sortBtn && sortSelect){
             for (let i = 0; i < like.length; i++) {
                 let trigger = false;
                 if (like[i]) {
+
                     let heartColor = like[i].querySelector('.js-card-heart');
                     like[i].onclick = function (x) {
                         return function () {
                             if (heartColor) {
+                                let pushlike = document.querySelector('.js-push-add-favorites');
+
+                                e.preventDefault();
+                                pushlike.classList.add('active');
+
+                                function showPush(item) {
+                                    item.classList.remove('active');
+                                }
+
+                                setTimeout(showPush, 5000, pushlike);
                                 if (trigger) {
                                     heartColor.style.fill = "#ffd803";
                                     trigger = false;
@@ -619,30 +737,31 @@ if(sortBtn && sortSelect){
                 }
             }
         }
+
         for (let i = 0; i < cards.length; i++) {
-            if(oldPrice && newPrice && economy[i]){
+            if (oldPrice && newPrice && economy[i]) {
                 let oldP = +oldPrice[i].innerHTML.replace(/\D+/g, ''),
-                newP = +newPrice[i].innerHTML.replace(/\D+/g, ''),
-                resultNum = oldP - newP,
-                resultDec = (oldP - newP) / (oldP / 100);
+                    newP = +newPrice[i].innerHTML.replace(/\D+/g, ''),
+                    resultNum = oldP - newP,
+                    resultDec = (oldP - newP) / (oldP / 100);
                 if (resultNum > 0) {
                     economy[i].innerHTML = `${resultNum} ₽ ${resultDec.toFixed(1)} %`;
                 } else {
                     economy[i].innerHTML = '-';
                 }
             }
-            
-           
+
+
         }
     }
     /* modal one click */
     let card = document.querySelectorAll('.card'),
 
-
         modalOneClickImg = document.querySelector('.modal-one-click__img img'),
         modalOneClickName = document.querySelector('.modal-one-click__name'),
-        modalOneClickPrice = document.querySelector('.js-modal-one-click-price'),
-        modalOneClickPriceOld = document.querySelector('.js-modal-one-click-price-old'),
+        modalOneClickPrice = document.querySelector('.modal-one-click__item .card__price-b'),
+        modalOneClickPriceOld = document.querySelector('.modal-one-click__item .card__price'),
+
         modalOneClickBtn = document.querySelectorAll('.js-one-click'),
 
         modalInputName = document.querySelector('#js-modal-one-click-name'),
@@ -656,45 +775,47 @@ if(sortBtn && sortSelect){
 
 
     if (cards || oneCardParent) {
+
         getCardInfoToModalOneClick(cards);
+
     }
 
 
     function getCardInfoToModalOneClick(cards) {
         for (let i = 0; i < cards.length; i++) {
+            console.log(modalOneClickBtn[i]);
             let cardPrice = cards[i].querySelector('.card__price-b'),
                 cardPriceOld = cards[i].querySelector('.card__price'),
                 cardName = cards[i].querySelector('.card__name'),
                 cardImg = cards[i].querySelector('.card__img img');
 
-
-            modalOneClickBtn[i].onclick = function (x) {
-                return function () {
-                    if (cardName) {
-                        modalOneClickName.innerHTML = cardName.innerHTML;
-
+            if (modalOneClickBtn[i]) {
+                modalOneClickBtn[i].onclick = function (x) {
+                    console.log(modalOneClickBtn[i]);
+                    return function () {
+                        if (cardName && modalOneClickName) {
+                            modalOneClickName.innerHTML = cardName.innerHTML;
+                        }
+                        if (cardPrice && modalOneClickPrice) {
+                            modalOneClickPrice.innerHTML = cardPrice.innerHTML;
+                        }
+                        if (cardPriceOld && modalOneClickPriceOld) {
+                            modalOneClickPriceOld.innerHTML = cardPriceOld.innerHTML;
+                        } else if (modalOneClickPriceOld) {
+                            modalOneClickPriceOld.innerHTML = '';
+                        }
+                        if (cardImg && modalOneClickImg) {
+                            modalOneClickImg.src = cardImg.src;
+                        }
+                        if (modalInputName && modalInputPrice && modalInputUrl) {
+                            modalInputName.value = cardName.innerHTML
+                            modalInputPrice.value = cardPrice.innerHTML;
+                            modalInputUrl.value = cardName.href;
+                        }
                     }
-                    if (cardPrice) {
-                        modalOneClickPrice.innerHTML = cardPrice.innerHTML;
+                }(i)
+            }
 
-                    }
-                    if (cardPriceOld) {
-                        modalOneClickPriceOld.innerHTML = cardPriceOld.innerHTML;
-
-                    }
-                    if (cardImg) {
-                        modalOneClickImg.src = cardImg.src;
-
-                    }
-
-
-                    if (modalInputName && modalInputPrice && modalInputUrl) {
-                        modalInputName.value = cardName.innerHTML
-                        modalInputPrice.value = cardPrice.innerHTML;
-                        modalInputUrl.value = cardName.href;
-                    }
-                }
-            }(i)
         }
     }
 

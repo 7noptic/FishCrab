@@ -126,7 +126,7 @@
       display: flex;
       justify-content: space-between;
       align-items: center;
-      font-size: 14px;
+      font-size: 12px;
       line-height: 24px;
       margin-bottom: 20px;
     }
@@ -148,7 +148,7 @@
       align-items: center;
 
       span {
-        margin-right: 10px;
+        display: none;
       }
 
       ul {
@@ -200,6 +200,15 @@
       }
     }
 
+    &__content {
+      a {
+        color: $orange !important;
+
+        &:hover {
+          color: $yellow !important;
+        }
+      }
+    }
 
   }
 }
@@ -306,7 +315,7 @@
       }
 
       &__header {
-        font-size: 12px;
+        font-size: 11px;
         flex-wrap: wrap;
 
         & > div {

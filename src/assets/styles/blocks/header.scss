@@ -1,6 +1,81 @@
 .header {
   padding: 10px 0;
 
+  .woocommerce-mini-cart__total.total {
+    display: flex;
+    justify-content: center;
+    margin-top: 30px;
+    span{
+      margin-left: 5px;
+    }
+  }
+
+  &-basket {
+    &__btn {
+      width: 100%;
+      padding: 13px;
+    }
+
+    &-rel {
+      position: relative;
+
+      &:hover {
+        .header-basket {
+          z-index: 100;
+          display: flex;
+        }
+      }
+    }
+
+    z-index: -1;
+    display: none;
+    position: absolute;
+    top: 60px;
+    right: 0;
+    width: 420px;
+    background-color: #fff;
+    border-radius: 18px;
+    box-shadow: 0 0 15px 0 #afabce;
+
+    flex-direction: column;
+    align-items: center;
+    padding: 30px 20px;
+
+    &__item {
+      display: flex;
+      margin-bottom: 20px;
+      width: 100%;
+    }
+
+    &__img {
+      width: 130px;
+      padding-right: 30px;
+
+      img {
+        border-radius: 18px;
+        width: 100px;
+        height: 100px;
+        min-width: 100px;
+        min-height: 100px;
+        max-width: 100px;
+        max-height: 100px;
+      }
+    }
+
+    &__name {
+      display: block;
+      font-weight: bold;
+      font-size: 15px;
+      line-height: 20px;
+      margin-bottom: 20px;
+    }
+
+    &__price {
+      font-size: 20px;
+      line-height: 20px;
+    }
+  }
+
   &__city {
     display: flex;
     font-size: 14px;
@@ -19,7 +94,8 @@
     display: flex;
     justify-content: flex-end;
     width: 100%;
-    a{
+
+    a {
       display: block;
       margin-left: 20px;
     }
@@ -133,8 +209,9 @@
     align-items: center;
     justify-content: center;
     width: 100%;
-    &-fix{
-      display: none!important;
+
+    &-fix {
+      display: none !important;
     }
 
     & > span {
@@ -153,6 +230,7 @@
     &__btn {
       padding: 6px 14px;
       position: relative;
+      transition: none !important;
 
       &:hover {
         & > .header-category__content {
@@ -172,6 +250,13 @@
         position: relative;
         display: flex;
         align-items: center;
+
+        &:last-of-type, &:nth-of-type(8) {
+          & > ul.header-category__submenu {
+            right: 0;
+            left: auto;
+          }
+        }
 
         & > a {
           display: flex;
@@ -201,16 +286,18 @@
 
     &__submenu {
       position: absolute;
-      width: 360px;
-      padding: 20px;
+      width: 510px;
+      columns: 3 100px;
+
+      padding: 20px !important;
       border-radius: $radiusBtn;
-      z-index: 10;
+      z-index: 1000;
       background-color: #fff;
       top: 30px;
       left: 0px;
       visibility: hidden;
       box-shadow: 0px 0px 25px rgba(0, 0, 0, 0.45);
-      transition: $transition3;
+      transition: none !important;
       opacity: 0;
 
       &-end {
@@ -220,21 +307,10 @@
 
       li {
         display: block;
-        padding: 10px 20px;
         font-weight: 300;
         font-size: 14px;
-        line-height: 20px;
+        line-height: 27px;
 
-        &:first-child {
-          padding: 20px 20px 10px 20px;
-        }
-
-        &:last-child {
-          padding: 10px 20px 20px 20px;
-          font-size: 14px;
-          line-height: 18px;
-          font-weight: 700;
-        }
 
         a {
           display: block;
@@ -326,7 +402,12 @@
           }
         }
       }
+
+      &__submenu {
+        width: 400px;
+      }
     }
+
 
     &__basket {
       span {
@@ -356,6 +437,10 @@
             font-size: 12px;
           }
         }
+      }
+
+      &__submenu {
+        width: 300px;
       }
     }
 
@@ -437,32 +522,12 @@
             margin-bottom: 10px;
           }
 
-          &:hover {
-            & > ul.header-category__submenu {
-              visibility: visible;
-              opacity: 1;
-              display: block;
-            }
 
-          }
         }
       }
 
       &__submenu {
-        margin-top: 10px;
-        position: relative;
         display: none;
-        width: 100%;
-        padding: 20px;
-        z-index: 10;
-        top: auto;
-        left: auto;
-        visibility: hidden;
-
-        &-end {
-          right: auto;
-          left: auto;
-        }
 
       }
 
@@ -476,8 +541,9 @@
       span {
         display: none;
       }
-      &-fix{
-        display: block!important;
+
+      &-fix {
+        display: block !important;
       }
 
       width: auto;
@@ -485,9 +551,14 @@
 
     &__profile {
       align-items: center;
-  a{
-    margin-left: 0;
-  }
+
+      a {
+        margin-left: 12px;
+
+        &:first-child {
+          margin-left: 0;
+        }
+      }
     }
   }
 }
