@@ -124,6 +124,19 @@
     max-width: 40px;
   }
 }
+.payment_method_jetpack_custom_gateway {
+  position: relative;
+  padding-left: 55px;
+
+  &::before {
+    content: url('../img/debit.svg');
+    position: absolute;
+    left: 0;
+    top: 0;
+    display: block;
+    max-width: 40px;
+  }
+}
 
 .payment_method_cod {
   position: relative;
@@ -152,6 +165,7 @@
     max-width: 40px;
   }
 }
+
 
 .archive {
   display: block !important;

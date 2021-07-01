@@ -72,7 +72,7 @@
     }
 
     &__check {
-      width: 33.333%;
+      width: 50%;
       display: flex;
       align-items: center;
       font-weight: normal;
@@ -80,6 +80,7 @@
       line-height: 24px;
       color: #7A5F46;
       margin-bottom: 20px;
+      padding-top: 7px;
 
       label {
         cursor: pointer;
@@ -219,7 +220,6 @@
 
       &__price, &__price-b {
         width: 100%;
-
 
 
         display: flex;

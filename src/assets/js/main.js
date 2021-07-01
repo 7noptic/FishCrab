@@ -167,8 +167,6 @@ window.addEventListener('DOMContentLoaded', () => {
         burgerMenu = document.querySelector('.adaptive-menu');
 
     if (localStorage.getItem('city') != null) {
-        console.log(localStorage.getItem('city'));
-        console.log(typeof (localStorage.getItem('city')));
         regionBtn.innerHTML = localStorage.getItem('city');
     } else {
         regionBtn.innerHTML = 'Москва';
@@ -325,8 +323,6 @@ window.addEventListener('DOMContentLoaded', () => {
         toggleTabs(regionLink, regionTabs, regionParent, 'js-region-link', true);
     }
     if (userParent && userLink.length > 0 && userLink.length == userTabs.length) {
-        console.log(userLink.length);
-        console.log(userTabs.length);
         toggleTabs(userLink, userTabs, userParent, 'js-user-link');
     }
 
@@ -347,7 +343,6 @@ window.addEventListener('DOMContentLoaded', () => {
 
         }
         parent.addEventListener('click', (e) => {
-            console.log(e.target);
             if (e.target && e.target.classList.contains(classContains)) {
                 e.preventDefault();
 
@@ -783,7 +778,6 @@ window.addEventListener('DOMContentLoaded', () => {
 
     function getCardInfoToModalOneClick(cards) {
         for (let i = 0; i < cards.length; i++) {
-            console.log(modalOneClickBtn[i]);
             let cardPrice = cards[i].querySelector('.card__price-b'),
                 cardPriceOld = cards[i].querySelector('.card__price'),
                 cardName = cards[i].querySelector('.card__name'),
@@ -791,7 +785,6 @@ window.addEventListener('DOMContentLoaded', () => {
 
             if (modalOneClickBtn[i]) {
                 modalOneClickBtn[i].onclick = function (x) {
-                    console.log(modalOneClickBtn[i]);
                     return function () {
                         if (cardName && modalOneClickName) {
                             modalOneClickName.innerHTML = cardName.innerHTML;
